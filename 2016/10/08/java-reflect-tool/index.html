@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next mist use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Mason" type="application/atom+xml" />
 
@@ -94,7 +92,7 @@
 <meta property="og:url" content="http://mapeiyu.com/2016/10/08/java-reflect-tool/index.html">
 <meta property="og:site_name" content="Mason">
 <meta property="og:description" content="Background  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation a">
-<meta property="og:updated_time" content="2016-10-09T02:54:11.621Z">
+<meta property="og:updated_time" content="2016-10-10T05:19:00.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Reflect Tool">
 <meta name="twitter:description" content="Background  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation a">
@@ -104,7 +102,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -279,12 +277,12 @@
 <h2 id="Library-projects"><a href="#Library-projects" class="headerlink" title="Library projects"></a>Library projects</h2><p>See the project in <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">GITHUB</a></p>
 <p>Download <a href="https://search.maven.org/remote_content?g=com.github.masontool&amp;a=reflect&amp;v=LATEST" target="_blank" rel="external">the latest JAR</a> or grab via Maven:</p>
 <p>For gradle:</p>
-<pre><code>compile &apos;com.github.masontool:reflect:1.0.0&apos;
-</code></pre><p>For maven: </p>
+<pre><code>compile &apos;com.github.masontool:reflect:2.1.0&apos;
+</code></pre><p>For maven:</p>
 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;com.github.masontool&lt;/groupId&gt;
   &lt;artifactId&gt;reflect&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;version&gt;2.1.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre><h2 id="Useful"><a href="#Useful" class="headerlink" title="Useful"></a>Useful</h2><p>I can show you the sample , it’s simple;</p>
 <p>ClassA:</p>
@@ -314,41 +312,28 @@ class ClassC {
 }
 </code></pre><p>We suppose all the classes, parameters, methods should be reflected. You can do like this:</p>
 <ol>
-<li><p>Get / Set static value in class. </p>
-<pre><code>ReflectClass clazzA = new ReflectClass(&quot;com.mason.meizu.sample.prvclass.ClassA&quot;);
+<li><p>Get / Set static value in class.</p>
+<pre><code>RClass clazzA = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassA&quot;);
 clazzA.setValue(&quot;staticString&quot;, &quot;static changed!!!!!&quot;);
-String staticString = (String) clazzA.getValue(&quot;staticString&quot;);
+String staticString = clazzA.getValue(&quot;staticString&quot;);
 </code></pre></li>
-<li><p>Get / Set normal value in class. </p>
-<pre><code>Object instance = clazzA.newInstance(null);//get instance 
-ReflectInstance instanceA = new ReflectInstance(instance); //wrap with ReflectInstance
+<li><p>Get / Set normal value in class.</p>
+<pre><code>RInstance instanceA = clazzA.newWrappedInstance();
 instanceA.setValue(&quot;normalString&quot;, &quot;normal changed!!!!!&quot;);
-String normalString = (String) instanceA.getValue(&quot;normalString&quot;);
+String normalString = instanceA.getValue(&quot;normalString&quot;);
 </code></pre></li>
 <li><p>Excute static method.</p>
-<pre><code>ReflectParam plusParam = new ReflectParam.Builder()
-        .add(5)//integer default, no need to specify the type
-        .add(4)//integer defaul, no need to specify the type
-        .create();
-Integer plusResult = (Integer) clazzA.execute(&quot;plus&quot;, plusParam);
+<pre><code>Integer plusResult = clazzA.execute(&quot;plus&quot;, Integer.class, 5, Integer.class, 4);
 </code></pre></li>
 <li><p>Excute normal method.</p>
-<pre><code>ReflectParam minusParam = new ReflectParam.Builder()
-        .add(long.class, 5)
-        .add(long.class, 4)
-        .create();
-long minusResult = (long) instanceA.execute(&quot;minus&quot;, minusParam);
+<pre><code>long minusResult = instanceA.execute(&quot;minus&quot;, long.class, 5, long.class, 4);
 </code></pre></li>
 <li><p>Support nested call. Here is a complex sample</p>
-<pre><code>ReflectClass clazzB = new ReflectClass(&quot;com.mason.meizu.sample.prvclass.ClassB&quot;);
-ReflectInstance instanceB = new ReflectInstance(clazzB.newInstance(null));
-ReflectClass clazzC = new ReflectClass(&quot;com.mason.meizu.sample.prvclass.ClassC&quot;);
-ReflectInstance instanceC = new ReflectInstance(clazzC.newInstance(null));
-ReflectParam complexParam = new ReflectParam.Builder()
-        .add(instanceB)
-        .add(instanceC)
-        .create();
-int complexResult = (int) clazzA.execute(&quot;plus&quot;, complexParam);
+<pre><code>RClass clazzB = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassB&quot;);
+RClass clazzC = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassC&quot;);
+int complexResult1 = clazzA.execute(&quot;plus&quot;,
+        clazzB, clazzB.newInstance(),
+        clazzC, clazzC.newInstance());
 </code></pre></li>
 </ol>
 <h2 id="Feedback"><a href="#Feedback" class="headerlink" title="Feedback"></a>Feedback</h2><p>   Any question you can contact me with email 307416073@qq.com.</p>
@@ -539,7 +524,7 @@ int complexResult = (int) clazzA.execute(&quot;plus&quot;, complexParam);
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -604,13 +589,6 @@ int complexResult = (int) clazzA.execute(&quot;plus&quot;, complexParam);
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
