@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="马培羽 Mason jjyyhema">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mason">
-<meta property="og:url" content="http://mapeiyu.com/index.html">
+<meta name="description" content="ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。
+本文首先会给出ReactiveX的核心操作符列表和对应的文档链接，后面还有一个决策树用于帮助你根据具体的场景选择合适的操作符。最后有一个语言特定实现的按字母排序的操作符列表。
+如果你想实现你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RX操作符概述">
+<meta property="og:url" content="http://mapeiyu.com/2016/11/07/rx-operation/index.html">
 <meta property="og:site_name" content="Mason">
-<meta property="og:description" content="马培羽 Mason jjyyhema">
+<meta property="og:description" content="ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。
+本文首先会给出ReactiveX的核心操作符列表和对应的文档链接，后面还有一个决策树用于帮助你根据具体的场景选择合适的操作符。最后有一个语言特定实现的按字母排序的操作符列表。
+如果你想实现你">
+<meta property="og:updated_time" content="2016-11-07T10:44:24.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mason">
-<meta name="twitter:description" content="马培羽 Mason jjyyhema">
+<meta name="twitter:title" content="RX操作符概述">
+<meta name="twitter:description" content="ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。
+本文首先会给出ReactiveX的核心操作符列表和对应的文档链接，后面还有一个决策树用于帮助你根据具体的场景选择合适的操作符。最后有一个语言特定实现的按字母排序的操作符列表。
+如果你想实现你">
 
 
 
@@ -112,7 +119,7 @@
   };
 </script>
 
-  <title> Mason </title>
+  <title> RX操作符概述 | Mason </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -133,9 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -212,9 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -234,10 +239,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/11/07/rx-operation/" itemprop="url">
-                  RX操作符概述
-                </a>
+                RX操作符概述
               
             
           </h1>
@@ -277,9 +279,7 @@
       
 
       
-        
-          
-            <p>ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。</p>
+        <p>ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。</p>
 <p>本文首先会给出ReactiveX的核心操作符列表和对应的文档链接，后面还有一个决策树用于帮助你根据具体的场景选择合适的操作符。最后有一个语言特定实现的按字母排序的操作符列表。</p>
 <p>如果你想实现你自己的操作符，可以参考这里：实现自定义操作符</p>
 <p>创建操作</p>
@@ -305,16 +305,19 @@
 <p>几种主要的需求</p>
 <p>直接创建一个Observable（创建操作）<br>组合多个Observable（组合操作）<br>对Observable发射的数据执行变换操作（变换操作）<br>从Observable发射的数据中取特定的值（过滤操作）<br>转发Observable的部分值（条件/布尔/过滤操作）<br>对Observable发射的数据序列求值（算术/聚合操作）</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -322,302 +325,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/09/hexo-blog-config/" rel="next" title="blog的hexo配置移植方法">
+                <i class="fa fa-chevron-left"></i> blog的hexo配置移植方法
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/10/09/hexo-blog-config/" itemprop="url">
-                  blog的hexo配置移植方法
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-09T11:59:08+08:00" content="2016-10-09">
-              2016-10-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>介绍如何将个人博客的hexo后台移植到另外的设备上, 使可以多平台上可以同步操作博客后台.</p>
-<h3 id="0-进入到你的hexo目录-执行git-init-生成git仓库-将git仓库上传到github"><a href="#0-进入到你的hexo目录-执行git-init-生成git仓库-将git仓库上传到github" class="headerlink" title="0. 进入到你的hexo目录, 执行git init 生成git仓库, 将git仓库上传到github."></a>0. 进入到你的hexo目录, 执行git init 生成git仓库, 将git仓库上传到github.</h3><pre><code>//初始化仓库
-cd hexo
-git init
-//提交init
-git add .gitignore
-git add .npmignore
-git add _config.yml
-git add source/
-git add themes/
-git commit -a -m init
-//上传github服务器, 首先你要在github上添加了新的远程仓库
-git remote add github git@gitlab.meizu.com:xxxx/xxxx.git
-push -u github master
-</code></pre><p>将配置文件上传至github, 看我的配置文件为<a href="https://github.com/masonTool/blog_config" target="_blank" rel="external">GITHUB</a></p>
-<h3 id="1-进入移植设备-将本工程下拉-会生成目录blog-config"><a href="#1-进入移植设备-将本工程下拉-会生成目录blog-config" class="headerlink" title="1. 进入移植设备. 将本工程下拉, 会生成目录blog_config"></a>1. 进入移植设备. 将本工程下拉, 会生成目录blog_config</h3><pre><code>mkdir temp
-git clone git@github.com:masonTool/blog_config.git
-</code></pre><h3 id="2-再拷贝一份blog-config-命名为blog-config1-进入目录"><a href="#2-再拷贝一份blog-config-命名为blog-config1-进入目录" class="headerlink" title="2. 再拷贝一份blog_config(命名为blog_config1), 进入目录"></a>2. 再拷贝一份blog_config(命名为blog_config1), 进入目录</h3><pre><code>cp -r blog_config/ blog_config1
-cd blog_config1
-</code></pre><h3 id="3-依次执行指令"><a href="#3-依次执行指令" class="headerlink" title="3. 依次执行指令"></a>3. 依次执行指令</h3><pre><code>npm install hexo --save
-hexo init
-npm install hexo-deployer-git --save
-</code></pre><h3 id="4-执行完上一步-会生成文件夹node-modules-文件夹中应该有如下的文件"><a href="#4-执行完上一步-会生成文件夹node-modules-文件夹中应该有如下的文件" class="headerlink" title="4. 执行完上一步, 会生成文件夹node_modules, 文件夹中应该有如下的文件"></a>4. 执行完上一步, 会生成文件夹node_modules, 文件夹中应该有如下的文件</h3><pre><code>hexo
-hexo-deployer-git
-dhexo-generator-archive
-hexo-generator-category
-hexo-generator-index
-hexo-generator-tag
-hexo-renderer-ejs
-hexo-renderer-marked
-hexo-renderer-stylus
-hexo-server
-</code></pre><h3 id="5-移动node-modules到原blog-config文件中-再删除blog-config1"><a href="#5-移动node-modules到原blog-config文件中-再删除blog-config1" class="headerlink" title="5. 移动node_modules到原blog_config文件中. 再删除blog_config1"></a>5. 移动node_modules到原blog_config文件中. 再删除blog_config1</h3><p>完成了移植. 此时你可以在多设备上写文章. 通过git来管理配置了.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/08/java-reflect-tool/" itemprop="url">
-                  Java Reflect Tool
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-08T20:53:02+08:00" content="2016-10-08">
-              2016-10-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation and cache the reflect results. Hope can help you.</p>
-<h2 id="Library-projects"><a href="#Library-projects" class="headerlink" title="Library projects"></a>Library projects</h2><p>See the project in <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">GITHUB</a></p>
-<p>Download <a href="https://search.maven.org/remote_content?g=com.github.masontool&amp;a=reflect&amp;v=LATEST" target="_blank" rel="external">the latest JAR</a> or grab via Maven:</p>
-<p>For gradle:</p>
-<pre><code>compile &apos;com.github.masontool:reflect:2.1.0&apos;
-</code></pre><p>For maven:</p>
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;com.github.masontool&lt;/groupId&gt;
-  &lt;artifactId&gt;reflect&lt;/artifactId&gt;
-  &lt;version&gt;2.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h2 id="Useful"><a href="#Useful" class="headerlink" title="Useful"></a>Useful</h2><p>I can show you the sample , it’s simple;</p>
-<p>ClassA:</p>
-<pre><code>package com.mason.meizu.sample.prvclass;
-class ClassA {
-    protected static String staticString = &quot;HELLO&quot;;
-    private String normalString = &quot;WORLD&quot;;
-    private static Integer plus(Integer a, Integer b) {
-        return a+b;
-    }
-    private long minus(long a, long b) {
-        return a - b;
-    }
-    private static int plus(ClassB b, ClassC c) {
-        return b.value + c.value;
-    }
-}
-</code></pre><p>ClassB:</p>
-<pre><code>package com.mason.meizu.sample.prvclass;
-class ClassB {
-    int value = 5;
-}
-</code></pre><p>ClassC:</p>
-<pre><code>package com.mason.meizu.sample.prvclass;
-class ClassC {
-    int value = 4;
-}
-</code></pre><p>We suppose all the classes, parameters, methods should be reflected. You can do like this:</p>
-<ol>
-<li><p>Get / Set static value in class.</p>
-<pre><code>RClass clazzA = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassA&quot;);
-clazzA.setValue(&quot;staticString&quot;, &quot;static changed!!!!!&quot;);
-String staticString = clazzA.getValue(&quot;staticString&quot;);
-</code></pre></li>
-<li><p>Get / Set normal value in class.</p>
-<pre><code>RInstance instanceA = clazzA.newWrappedInstance();
-instanceA.setValue(&quot;normalString&quot;, &quot;normal changed!!!!!&quot;);
-String normalString = instanceA.getValue(&quot;normalString&quot;);
-</code></pre></li>
-<li><p>Excute static method.</p>
-<pre><code>Integer plusResult = clazzA.execute(&quot;plus&quot;, Integer.class, 5, Integer.class, 4);
-</code></pre></li>
-<li><p>Excute normal method.</p>
-<pre><code>long minusResult = instanceA.execute(&quot;minus&quot;, long.class, 5, long.class, 4);
-</code></pre></li>
-<li><p>Support nested call. Here is a complex sample</p>
-<pre><code>RClass clazzB = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassB&quot;);
-RClass clazzC = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassC&quot;);
-int complexResult1 = clazzA.execute(&quot;plus&quot;,
-        clazzB, clazzB.newInstance(),
-        clazzC, clazzC.newInstance());
-</code></pre></li>
-</ol>
-<h2 id="Feedback"><a href="#Feedback" class="headerlink" title="Feedback"></a>Feedback</h2><p>   Any question you can contact me with email 307416073@qq.com.</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -625,6 +358,10 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -644,8 +381,17 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -695,6 +441,17 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -791,6 +548,10 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
