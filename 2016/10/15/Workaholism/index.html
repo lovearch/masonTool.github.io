@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,android,反射," />
+  <meta name="keywords" content="书摘," />
 
 
 
@@ -86,16 +86,22 @@
 
 
 
-<meta name="description" content="Background  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation a">
+<meta name="description" content="我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。
+这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。
+工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java Reflect Tool">
-<meta property="og:url" content="http://mapeiyu.com/2016/10/08/java-reflect-tool/index.html">
+<meta property="og:title" content="不做工作狂">
+<meta property="og:url" content="http://mapeiyu.com/2016/10/15/Workaholism/index.html">
 <meta property="og:site_name" content="Mason">
-<meta property="og:description" content="Background  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation a">
-<meta property="og:updated_time" content="2016-10-10T05:19:00.294Z">
+<meta property="og:description" content="我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。
+这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。
+工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情">
+<meta property="og:updated_time" content="2016-11-07T10:49:40.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java Reflect Tool">
-<meta name="twitter:description" content="Background  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation a">
+<meta name="twitter:title" content="不做工作狂">
+<meta name="twitter:description" content="我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。
+这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。
+工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情">
 
 
 
@@ -113,7 +119,7 @@
   };
 </script>
 
-  <title> Java Reflect Tool | Mason </title>
+  <title> 不做工作狂 | Mason </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -233,7 +239,7 @@
             
             
               
-                Java Reflect Tool
+                不做工作狂
               
             
           </h1>
@@ -245,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-08T20:53:02+08:00" content="2016-10-08">
-              2016-10-08
+            <time itemprop="dateCreated" datetime="2016-10-15T22:39:58+08:00" content="2016-10-15">
+              2016-10-15
             </time>
           </span>
 
@@ -273,70 +279,13 @@
       
 
       
-        <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation and cache the reflect results. Hope can help you.</p>
-<h2 id="Library-projects"><a href="#Library-projects" class="headerlink" title="Library projects"></a>Library projects</h2><p>See the project in <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">GITHUB</a></p>
-<p>Download <a href="https://search.maven.org/remote_content?g=com.github.masontool&amp;a=reflect&amp;v=LATEST" target="_blank" rel="external">the latest JAR</a> or grab via Maven:</p>
-<p>For gradle:</p>
-<pre><code>compile &apos;com.github.masontool:reflect:2.1.0&apos;
-</code></pre><p>For maven:</p>
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;com.github.masontool&lt;/groupId&gt;
-  &lt;artifactId&gt;reflect&lt;/artifactId&gt;
-  &lt;version&gt;2.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h2 id="Useful"><a href="#Useful" class="headerlink" title="Useful"></a>Useful</h2><p>I can show you the sample , it’s simple;</p>
-<p>ClassA:</p>
-<pre><code>package com.mason.meizu.sample.prvclass;
-class ClassA {
-    protected static String staticString = &quot;HELLO&quot;;
-    private String normalString = &quot;WORLD&quot;;
-    private static Integer plus(Integer a, Integer b) {
-        return a+b;
-    }
-    private long minus(long a, long b) {
-        return a - b;
-    }
-    private static int plus(ClassB b, ClassC c) {
-        return b.value + c.value;
-    }
-}
-</code></pre><p>ClassB:</p>
-<pre><code>package com.mason.meizu.sample.prvclass;
-class ClassB {
-    int value = 5;
-}
-</code></pre><p>ClassC:</p>
-<pre><code>package com.mason.meizu.sample.prvclass;
-class ClassC {
-    int value = 4;
-}
-</code></pre><p>We suppose all the classes, parameters, methods should be reflected. You can do like this:</p>
-<ol>
-<li><p>Get / Set static value in class.</p>
-<pre><code>RClass clazzA = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassA&quot;);
-clazzA.setValue(&quot;staticString&quot;, &quot;static changed!!!!!&quot;);
-String staticString = clazzA.getValue(&quot;staticString&quot;);
-</code></pre></li>
-<li><p>Get / Set normal value in class.</p>
-<pre><code>RInstance instanceA = clazzA.newWrappedInstance();
-instanceA.setValue(&quot;normalString&quot;, &quot;normal changed!!!!!&quot;);
-String normalString = instanceA.getValue(&quot;normalString&quot;);
-</code></pre></li>
-<li><p>Excute static method.</p>
-<pre><code>Integer plusResult = clazzA.execute(&quot;plus&quot;, Integer.class, 5, Integer.class, 4);
-</code></pre></li>
-<li><p>Excute normal method.</p>
-<pre><code>long minusResult = instanceA.execute(&quot;minus&quot;, long.class, 5, long.class, 4);
-</code></pre></li>
-<li><p>Support nested call. Here is a complex sample</p>
-<pre><code>RClass clazzB = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassB&quot;);
-RClass clazzC = new RClass(&quot;com.mason.meizu.sample.prvclass.ClassC&quot;);
-int complexResult1 = clazzA.execute(&quot;plus&quot;,
-        clazzB, clazzB.newInstance(),
-        clazzC, clazzC.newInstance());
-</code></pre></li>
-</ol>
-<h2 id="Feedback"><a href="#Feedback" class="headerlink" title="Feedback"></a>Feedback</h2><p>   Any question you can contact me with email 307416073@qq.com.</p>
+        <p>我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。</p>
+<p>这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。</p>
+<p>工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。他们想用蛮干来弥补一些小技巧。结果就是粗野的解决。</p>
+<p>他们甚至会制造危机。他们不会去找高效的方法因为他们确实喜欢加班。他们享受英雄般的感觉。他们制造出问题(通常是无意识地)以便多多工作。工作狂若是不留到很晚会觉得仅仅花合理的时间工作是不合理的。这会四处充满内疚感和低士气。并且,产生理所当然的想法──留守很晚是职责之外的事,就算他们不是真的富有成效。</p>
+<p>如果你所做的都是工作,你不太可能得到很好的评价。你的价值和决定会以误解告终。你不能判断额外的努力是值得还是不值得。你只会彻底累垮。没有人能疲倦中做出明晰的决定。</p>
+<p>  最后,工作狂并不比非工作狂达成更多目标。他们也许会宣称自己是完美主义者,但那只是意味着浪费时间在注意一些不重要的细节而不是着手于下一个任务。 </p>
+<p>  工作狂不是英雄。他们不是在节约时间而是在浪费。真正的英雄已经回到家中,因为她找到更快的方法把工作做好。</p>
 
       
     </div>
@@ -358,11 +307,7 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag">#java</a>
-          
-            <a href="/tags/android/" rel="tag">#android</a>
-          
-            <a href="/tags/反射/" rel="tag">#反射</a>
+            <a href="/tags/书摘/" rel="tag">#书摘</a>
           
         </div>
       
@@ -371,12 +316,16 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/09/hexo-blog-config/" rel="next" title="blog的hexo配置移植方法">
+                <i class="fa fa-chevron-left"></i> blog的hexo配置移植方法
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/09/hexo-blog-config/" rel="prev" title="blog的hexo配置移植方法">
-                blog的hexo配置移植方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/07/rx-operation/" rel="prev" title="RX操作符概述">
+                RX操作符概述 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,7 +440,7 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Library-projects"><span class="nav-number">2.</span> <span class="nav-text">Library projects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Useful"><span class="nav-number">3.</span> <span class="nav-text">Useful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feedback"><span class="nav-number">4.</span> <span class="nav-text">Feedback</span></a></li></ol></div>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
         </section>
