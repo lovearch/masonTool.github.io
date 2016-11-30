@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2016-11-30T05:52:41.572Z</updated>
+  <updated>2016-11-30T09:45:08.952Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://mapeiyu.com/2016/11/07/rx-operation/"/>
     <id>http://mapeiyu.com/2016/11/07/rx-operation/</id>
     <published>2016-11-07T10:43:34.000Z</published>
-    <updated>2016-11-30T05:52:41.572Z</updated>
+    <updated>2016-11-30T09:45:08.952Z</updated>
     
     <content type="html"><![CDATA[<p>ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。</p>
 <p>本文首先会给出ReactiveX的核心操作符列表和对应的文档链接，后面还有一个决策树用于帮助你根据具体的场景选择合适的操作符。最后有一个语言特定实现的按字母排序的操作符列表。</p>
@@ -56,6 +56,10 @@
     
     </summary>
     
+      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="转载" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E8%BD%AC%E8%BD%BD/"/>
+    
     
       <category term="RX" scheme="http://mapeiyu.com/tags/RX/"/>
     
@@ -66,7 +70,7 @@
     <link href="http://mapeiyu.com/2016/10/15/Workaholism/"/>
     <id>http://mapeiyu.com/2016/10/15/Workaholism/</id>
     <published>2016-10-15T14:39:58.000Z</published>
-    <updated>2016-11-30T05:52:35.696Z</updated>
+    <updated>2016-11-30T09:45:18.028Z</updated>
     
     <content type="html"><![CDATA[<p>我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。<br>这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。</p>
 <p>工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。他们想用蛮干来弥补一些小技巧。结果就是粗野的解决。</p>
@@ -81,6 +85,10 @@
     
     </summary>
     
+      <category term="生活" scheme="http://mapeiyu.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="转载" scheme="http://mapeiyu.com/categories/%E7%94%9F%E6%B4%BB/%E8%BD%AC%E8%BD%BD/"/>
+    
     
       <category term="书摘" scheme="http://mapeiyu.com/tags/%E4%B9%A6%E6%91%98/"/>
     
@@ -91,7 +99,7 @@
     <link href="http://mapeiyu.com/2016/10/09/hexo-blog-config/"/>
     <id>http://mapeiyu.com/2016/10/09/hexo-blog-config/</id>
     <published>2016-10-09T03:59:08.000Z</published>
-    <updated>2016-11-30T05:52:30.088Z</updated>
+    <updated>2016-11-30T09:45:24.464Z</updated>
     
     <content type="html"><![CDATA[<p>介绍如何将个人博客的hexo后台移植到另外的设备上, 使可以多平台上可以同步操作博客后台.</p>
 <h3 id="0-进入到你的hexo目录-执行git-init-生成git仓库-将git仓库上传到github"><a href="#0-进入到你的hexo目录-执行git-init-生成git仓库-将git仓库上传到github" class="headerlink" title="0. 进入到你的hexo目录, 执行git init 生成git仓库, 将git仓库上传到github."></a>0. 进入到你的hexo目录, 执行git init 生成git仓库, 将git仓库上传到github.</h3><pre><code>//初始化仓库
@@ -135,6 +143,10 @@ hexo-server
     
     </summary>
     
+      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="hexo" scheme="http://mapeiyu.com/tags/hexo/"/>
     
@@ -147,7 +159,7 @@ hexo-server
     <link href="http://mapeiyu.com/2016/10/08/java-reflect-tool/"/>
     <id>http://mapeiyu.com/2016/10/08/java-reflect-tool/</id>
     <published>2016-10-08T12:53:02.000Z</published>
-    <updated>2016-11-30T05:52:16.944Z</updated>
+    <updated>2016-11-30T09:45:31.048Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation and cache the reflect results. Hope can help you.</p>
 <h2 id="Library-projects"><a href="#Library-projects" class="headerlink" title="Library projects"></a>Library projects</h2><p>See the project in <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">GITHUB</a></p>
@@ -220,6 +232,10 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
       &lt;h2 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h2&gt;&lt;p&gt;  Java reflect operation always confus
     
     </summary>
+    
+      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
     
     
       <category term="java" scheme="http://mapeiyu.com/tags/java/"/>
