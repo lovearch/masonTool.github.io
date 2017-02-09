@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-02-09T07:13:41.787Z</updated>
+  <updated>2017-02-09T07:14:28.163Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/"/>
     <id>http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/</id>
     <published>2017-02-09T06:46:38.000Z</published>
-    <updated>2017-02-09T07:13:41.787Z</updated>
+    <updated>2017-02-09T07:14:28.163Z</updated>
     
     <content type="html"><![CDATA[<p>增加反射interface的实例化支持. 还添加了中文文档说明哦。</p>
 <p><a href="https://github.com/masonTool/reflect" target="_blank" rel="external">点我传送门</a>  </p>
