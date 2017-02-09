@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2016-11-30T09:45:08.952Z</updated>
+  <updated>2017-02-09T07:11:09.003Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>反射工具reflect更新到2.2.0版本(有料哦)</title>
+    <link href="http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/"/>
+    <id>http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/</id>
+    <published>2017-02-09T06:46:38.000Z</published>
+    <updated>2017-02-09T07:11:09.003Z</updated>
+    
+    <content type="html"><![CDATA[<p>增加反射interface的实例化支持. 还添加了中文文档说明哦。</p>
+<p><a href="https://github.com/masonTool/reflect" target="_blank" rel="external">点我传送门</a>  </p>
+<p><img src="/2017/02/09/reflect-update-2-2-0/JYEY6NH06E91.jpg" alt="我有料"></p>
+<p><img src="/2017/02/09/reflect-update-2-2-0/jinguanzhang.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;增加反射interface的实例化支持. 还添加了中文文档说明哦。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/masonTool/reflect&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点我传送门&lt;/a&gt;  &lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
+      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="java" scheme="http://mapeiyu.com/tags/java/"/>
+    
+      <category term="android" scheme="http://mapeiyu.com/tags/android/"/>
+    
+      <category term="反射" scheme="http://mapeiyu.com/tags/%E5%8F%8D%E5%B0%84/"/>
+    
+  </entry>
   
   <entry>
     <title>RX操作符概述</title>
