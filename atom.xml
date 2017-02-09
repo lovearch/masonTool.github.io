@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-02-09T07:18:05.863Z</updated>
+  <updated>2017-02-09T07:20:26.843Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -16,16 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>反射工具reflect更新到2.2.0版本(有料哦)</title>
+    <title>反射工具reflect更新到2.2.0版本(有重料)</title>
     <link href="http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/"/>
     <id>http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/</id>
     <published>2017-02-09T06:46:38.000Z</published>
-    <updated>2017-02-09T07:18:05.863Z</updated>
+    <updated>2017-02-09T07:20:26.843Z</updated>
     
     <content type="html"><![CDATA[<p>增加反射interface的实例化支持. 还添加了中文文档说明哦。</p>
 <p><a href="https://github.com/masonTool/reflect" target="_blank" rel="external">点我传送门</a>  </p>
-<p><center>料来啦！！！</center></p>
-<p><img src="/2017/02/09/reflect-update-2-2-0/JYEY6NH06E91.jpg" alt="我有料"></p>
+<p><center><img src="/2017/02/09/reflect-update-2-2-0/JYEY6NH06E91.jpg" alt="我有料"></center><br>额，我是料!!</p>
 <p><center><img src="/2017/02/09/reflect-update-2-2-0/jinguanzhang.jpg" alt=""></center></p>
 ]]></content>
     
