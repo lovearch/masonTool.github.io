@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-02-13T03:25:47.316Z</updated>
+  <updated>2017-02-13T08:15:10.937Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -16,11 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>吐槽</title>
+    <link href="http://mapeiyu.com/2017/02/13/tu-cao/"/>
+    <id>http://mapeiyu.com/2017/02/13/tu-cao/</id>
+    <published>2017-02-13T08:13:09.000Z</published>
+    <updated>2017-02-13T08:15:10.937Z</updated>
+    
+    <content type="html"><![CDATA[<p>人如果不时常问问自己内心，那就会处于一种浑浑噩噩的状态。我就时常这样,偶尔清醒过来嘀咕两句，随后又甘心沉沦进去。然而心中却依然怀揣的自认为是理想的白日梦，以便于沉沦的心安理得。</p>
+<p>我想到一个词“惰性”，人都有惰性。拷问自己本身就是一件痛苦的事。忙碌有时也是一种惰性，很多人忙碌并不是勤劳，仅仅是因为习惯了忙碌。习惯是一种让人舒服的状态，也是一种惰性。 </p>
+<p>生活的状态其实都很随性的，没有一种标准定义什么是好与不好。但财富，在肤浅的层面上却能给人最直观的判断。不要理解的过于深刻，此处财富就是通俗意义上的money。财富好处不言自明。人总共就两种欲望，物质层面与精神层面。财富在这两个方面都能满足。</p>
+<p>曾经，甚至我在混沌状态中还在模糊的意识中认为钱不是问题，老子有的是时间。真的以为“赚他一个亿”其实也不是什么笑话。一个亿？也不多嘛。可是细细算个帐下来，哪怕把这个任务均分到30年，每天都需要1万的进帐。貌似有点遥远。</p>
+<p>唉！不禁感慨，现实就是这么赤裸裸。目标总是可望不可及。理想在现实面前就是一坨金黄的，诱人的镶了金边的屎。你要前行，却有各方向的力在拉扯，最终不知道要被带向何方。幸福是什么？温暖是什么？不知道。我是一艘在风雨中摇拽的船，没有港湾。</p>
+<p>有些人把感恩记在本子上，记录生活中点滴的美好，它的心中充满阳光，甚至照亮了周围。有些却把缺憾记在本子上，记录美好生活中的点滴缺点，时不时拿来回味咀嚼，偿到苦处就破口大骂。或许根源在于自私吧，整天想着自己，整个人就会被黑暗笼罩。心存善念的面对别人，才会让心情阳光明媚。</p>
+<p>套几句歌词以自勉，因为我只是在胡扯。</p>
+<p><center>该不该搁下重重的壳</center></p>
+<p><center>寻找到底哪里有蓝天</center></p>
+<p><center>随着轻轻的风轻轻地飘</center></p>
+<p><center>历经的伤都不感觉疼</center></p>
+<p><center>我要一步一步往上爬</center></p>
+<p><center>等待阳光静静看着它的脸</center></p>
+<p><center>小小的天有大大的梦想</center></p>
+<p><center>重重的壳裹着轻轻地仰望</center></p>
+<p><center>我要一步一步往上爬</center></p>
+<p><center>在最高点乘着叶片往前飞</center></p>
+<p><center>小小的天流过的泪和汗</center></p>
+<p><center>总有一天我有属于我的天</center></p>
+<p><center><img src="/2017/02/13/tu-cao/timg.jpeg" alt="云淡风轻"></center></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;人如果不时常问问自己内心，那就会处于一种浑浑噩噩的状态。我就时常这样,偶尔清醒过来嘀咕两句，随后又甘心沉沦进去。然而心中却依然怀揣的自认为是理想的白日梦，以便于沉沦的心安理得。&lt;/p&gt;
+&lt;p&gt;我想到一个词“惰性”，人都有惰性。拷问自己本身就是一件痛苦的事。忙碌有时也是一种惰
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://mapeiyu.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>groovy closure</title>
     <link href="http://mapeiyu.com/2017/02/13/groovy-closure/"/>
     <id>http://mapeiyu.com/2017/02/13/groovy-closure/</id>
     <published>2017-02-13T03:18:28.000Z</published>
-    <updated>2017-02-13T03:25:47.316Z</updated>
+    <updated>2017-02-13T06:14:55.592Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>闭包是可以用作函数参数和方法参数的代码块. 其实Groovy的闭包更象是一个“代码块”或者方法指针，代码在某处被定义然后在其后的调用处执行</p>
 <h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def square = &#123;it * it&#125; // 定义一个叫square的闭包。it是默认的 参数名称</div><div class="line">assert 4 == square(2) // 使用闭包</div><div class="line">assert [1,4,9] == [1,2,3].collect(square) // 使用闭包</div><div class="line"></div><div class="line">def closure = &#123; param -&gt; println(&quot;hello $&#123;param&#125;&quot;) &#125;</div><div class="line">closure.call(&quot;world!&quot;)</div><div class="line"> </div><div class="line">def closure = &#123; greeting, name -&gt; println(greeting + name) &#125;</div><div class="line">closure.call(&quot;hello &quot;, &quot;world!&quot;)</div></pre></td></tr></table></figure>
@@ -54,9 +95,7 @@
     
     </summary>
     
-      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
+      <category term="gradle开发" scheme="http://mapeiyu.com/categories/gradle%E5%BC%80%E5%8F%91/"/>
     
     
       <category term="groovy" scheme="http://mapeiyu.com/tags/groovy/"/>
@@ -70,7 +109,7 @@
     <link href="http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/"/>
     <id>http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/</id>
     <published>2017-02-09T06:46:38.000Z</published>
-    <updated>2017-02-13T03:22:45.748Z</updated>
+    <updated>2017-02-13T06:16:44.224Z</updated>
     
     <content type="html"><![CDATA[<p>增加反射interface的实例化支持. 还添加了中文文档说明哦。</p>
 <p><a href="https://github.com/masonTool/reflect" target="_blank" rel="external">点我传送门</a>  </p>
@@ -86,16 +125,14 @@
     
     </summary>
     
-      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创组件" scheme="http://mapeiyu.com/categories/%E5%8E%9F%E5%88%9B%E7%BB%84%E4%BB%B6/"/>
     
     
       <category term="java" scheme="http://mapeiyu.com/tags/java/"/>
     
       <category term="android" scheme="http://mapeiyu.com/tags/android/"/>
     
-      <category term="反射" scheme="http://mapeiyu.com/tags/%E5%8F%8D%E5%B0%84/"/>
+      <category term="reflect" scheme="http://mapeiyu.com/tags/reflect/"/>
     
   </entry>
   
@@ -104,7 +141,7 @@
     <link href="http://mapeiyu.com/2016/11/07/rx-operation/"/>
     <id>http://mapeiyu.com/2016/11/07/rx-operation/</id>
     <published>2016-11-07T10:43:34.000Z</published>
-    <updated>2016-11-30T09:45:08.952Z</updated>
+    <updated>2017-02-13T06:14:05.856Z</updated>
     
     <content type="html"><![CDATA[<p>ReactiveX的每种编程语言的实现都实现了一组操作符的集合。不同的实现之间有很多重叠的部分，也有一些操作符只存在特定的实现中。每种实现都倾向于用那种编程语言中他们熟悉的上下文中相似的方法给这些操作符命名。</p>
 <p>本文首先会给出ReactiveX的核心操作符列表和对应的文档链接，后面还有一个决策树用于帮助你根据具体的场景选择合适的操作符。最后有一个语言特定实现的按字母排序的操作符列表。</p>
@@ -140,10 +177,10 @@
     
     </summary>
     
-      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="RX" scheme="http://mapeiyu.com/categories/RX/"/>
     
-      <category term="转载" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E8%BD%AC%E8%BD%BD/"/>
     
+      <category term="java" scheme="http://mapeiyu.com/tags/java/"/>
     
       <category term="RX" scheme="http://mapeiyu.com/tags/RX/"/>
     
@@ -154,7 +191,7 @@
     <link href="http://mapeiyu.com/2016/10/15/Workaholism/"/>
     <id>http://mapeiyu.com/2016/10/15/Workaholism/</id>
     <published>2016-10-15T14:39:58.000Z</published>
-    <updated>2016-11-30T09:45:18.028Z</updated>
+    <updated>2017-02-13T06:13:36.748Z</updated>
     
     <content type="html"><![CDATA[<p>我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。<br>这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。</p>
 <p>工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。他们想用蛮干来弥补一些小技巧。结果就是粗野的解决。</p>
@@ -169,12 +206,8 @@
     
     </summary>
     
-      <category term="生活" scheme="http://mapeiyu.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="书摘" scheme="http://mapeiyu.com/categories/%E4%B9%A6%E6%91%98/"/>
     
-      <category term="转载" scheme="http://mapeiyu.com/categories/%E7%94%9F%E6%B4%BB/%E8%BD%AC%E8%BD%BD/"/>
-    
-    
-      <category term="书摘" scheme="http://mapeiyu.com/tags/%E4%B9%A6%E6%91%98/"/>
     
   </entry>
   
@@ -183,7 +216,7 @@
     <link href="http://mapeiyu.com/2016/10/09/hexo-blog-config/"/>
     <id>http://mapeiyu.com/2016/10/09/hexo-blog-config/</id>
     <published>2016-10-09T03:59:08.000Z</published>
-    <updated>2016-11-30T09:45:24.464Z</updated>
+    <updated>2017-02-13T06:17:39.048Z</updated>
     
     <content type="html"><![CDATA[<p>介绍如何将个人博客的hexo后台移植到另外的设备上, 使可以多平台上可以同步操作博客后台.</p>
 <h3 id="0-进入到你的hexo目录-执行git-init-生成git仓库-将git仓库上传到github"><a href="#0-进入到你的hexo目录-执行git-init-生成git仓库-将git仓库上传到github" class="headerlink" title="0. 进入到你的hexo目录, 执行git init 生成git仓库, 将git仓库上传到github."></a>0. 进入到你的hexo目录, 执行git init 生成git仓库, 将git仓库上传到github.</h3><pre><code>//初始化仓库
@@ -227,9 +260,7 @@ hexo-server
     
     </summary>
     
-      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
+      <category term="博客开发" scheme="http://mapeiyu.com/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/"/>
     
     
       <category term="hexo" scheme="http://mapeiyu.com/tags/hexo/"/>
@@ -243,7 +274,7 @@ hexo-server
     <link href="http://mapeiyu.com/2016/10/08/java-reflect-tool/"/>
     <id>http://mapeiyu.com/2016/10/08/java-reflect-tool/</id>
     <published>2016-10-08T12:53:02.000Z</published>
-    <updated>2016-11-30T09:45:31.048Z</updated>
+    <updated>2017-02-13T06:17:11.568Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>  Java reflect operation always confuse me, cause is not so intuitive. And it’s low efficiency lead us can not use it very frequently. This reflect tool can help you simplify the operation and cache the reflect results. Hope can help you.</p>
 <h2 id="Library-projects"><a href="#Library-projects" class="headerlink" title="Library projects"></a>Library projects</h2><p>See the project in <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">GITHUB</a></p>
@@ -317,16 +348,14 @@ int complexResult1 = clazzA.execute(&quot;plus&quot;,
     
     </summary>
     
-      <category term="技术" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="原创" scheme="http://mapeiyu.com/categories/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创组件" scheme="http://mapeiyu.com/categories/%E5%8E%9F%E5%88%9B%E7%BB%84%E4%BB%B6/"/>
     
     
       <category term="java" scheme="http://mapeiyu.com/tags/java/"/>
     
       <category term="android" scheme="http://mapeiyu.com/tags/android/"/>
     
-      <category term="反射" scheme="http://mapeiyu.com/tags/%E5%8F%8D%E5%B0%84/"/>
+      <category term="reflect" scheme="http://mapeiyu.com/tags/reflect/"/>
     
   </entry>
   
