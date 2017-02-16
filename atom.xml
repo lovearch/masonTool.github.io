@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-02-13T08:22:04.017Z</updated>
+  <updated>2017-02-16T01:58:52.549Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -14,6 +14,165 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java Debug 之 命令行调试 （一）</title>
+    <link href="http://mapeiyu.com/2017/02/16/Java-Debug-%E4%B9%8B-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95-%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/</id>
+    <published>2017-02-16T01:52:27.000Z</published>
+    <updated>2017-02-16T01:58:52.549Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步把debug研究透彻。要研究一个协议， 先找一个入手点。 平时大家都是用ide来调试， 但是本质一定是有一套协议的， 所以我们先从命令行入手。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>首先你要有一个java环境（费话么）。相信对这个主题感性趣的人，这个条件一定是具备的。</li>
+<li>准备一个java工程。一个简单的.java文件也可以。这里我提供一个demo。 为了省事拿自己之前写的小工具做例子吧。 希望你能down下来， 后的讲解都是以这个demo为基础的. 路径为 <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">reflect工具</a></li>
+<li>本文基于ubuntu环境。其他环境都不多。</li>
+</ul>
+<h2 id="动手"><a href="#动手" class="headerlink" title="动手"></a>动手</h2><ul>
+<li><p>进入命令行， 选一个目录开始我们旅程.</p>
+</li>
+<li><p>工程拉下来没有？ 没有就执行一下git clone </p>
+</li>
+</ul>
+<pre><code>git clone https://github.com/masonTool/reflect
+</code></pre><ul>
+<li>编译工程。 按下面的步骤一步步执行</li>
+</ul>
+<pre><code>//进入工程目录
+cd reflect  
+
+//创建类目录, 名字whatever, 用于存放类文件
+mkdir aaaa  
+
+//编译依赖. 我们是要编译sample里面的Main.java, 因为Main.java是java的入口啊。
+//说明一下:  -g 调试信息选项, 否则不能查看调试过程中的调试信息. 这也是ide的debug模式与release模式的区别
+            -d 指定类文件编译进我们刚创建的aaaa目录里面
+javac -g -d aaaa reflect/src/main/java/com/mason/meizu/reflect/*.java 
+
+//编译目标类 Main.java 和 prvclass/下的所有的java文件。
+//此处选项 -cp 实际是 -classpath. 指定编译上述java文件的依赖类的路径。 刚刚我们编进了aaaa, 此处用一下。
+//同时也指定了 -d aaaa , 所以此次编译的结果也放进 aaaa 目录
+javac -g -d aaaa -cp aaaa sample/src/com/mason/meizu/sample/prvclass/*.java sample/src/com/mason/meizu/sample/Main.java
+</code></pre><ul>
+<li><p>OK啦， 我们需要调试的资源就具备了。 进入 aaaa目录， tree 一下， 你看到的应该是这样</p>
+<pre><code>cd aaaa
+
+tree //如果没有命令就 sudo apt-get install tree 装一个
+
+└── com
+    └── mason
+        └── meizu
+            ├── reflect
+            │   ├── RClass.class
+            │   ├── RExecutor.class
+            │   ├── RInstance.class
+            │   ├── RInterface.class
+            │   ├── RInterface$ProxyHandler.class
+            │   └── RParam.class
+            └── sample
+                ├── Main.class
+                ├── Main$Demo.class
+                └── prvclass
+                    ├── ClassA.class
+                    ├── ClassB.class
+                    ├── ClassC.class
+                    ├── ClassD4Listener.class
+                    └── ClassD4Listener$Listener.class
+</code></pre></li>
+</ul>
+<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><ul>
+<li><p>进入调试模式</p>
+<pre><code>jdb com.mason.meizu.sample.Main
+</code></pre><p>  结果</p>
+<pre><code>Initializing jdb ...
+&gt; 
+</code></pre></li>
+<li><p>设置断点</p>
+<p>  输入</p>
+<pre><code>stop at com.mason.meizu.sample.Main:30//此处30指定断点在源文件的第30行
+</code></pre><p>  结果</p>
+<pre><code>Deferring breakpoint com.mason.meizu.sample.Main:30.
+It will be set after the class is loaded.
+</code></pre><p>  运行程程，到断点处停止。 输入</p>
+<pre><code>run
+</code></pre><p>  结果</p>
+<pre><code>run com.mason.meizu.sample.Main
+Set uncaught java.lang.Throwable
+Set deferred uncaught java.lang.Throwable
+&gt; 
+VM Started: Set deferred breakpoint com.mason.meizu.sample.Main:30
+
+Breakpoint hit: &quot;thread=main&quot;, com.mason.meizu.sample.Main.main(), line=30 bci=10
+
+main[1] 
+</code></pre><p>  看一下当前的变量, 输入 </p>
+<pre><code>locals
+</code></pre><p>  结果</p>
+<pre><code>Method arguments:
+args = instance of java.lang.String[0] (id=408)
+Local variables:
+clazzA = instance of com.mason.meizu.reflect.RClass(id=409)
+main[1]
+</code></pre><p>  看一下变量clazzA的详细情况, 输入</p>
+<pre><code>dump clazzA
+</code></pre><p>  结果</p>
+<pre><code>clazzA = {
+    sClassMap: instance of java.util.HashMap(id=410)
+    sConstructorMap: instance of java.util.HashMap(id=411)
+    className: &quot;com.mason.meizu.sample.prvclass.ClassA&quot;
+    classObj: instance of java.lang.Class(reflected class=com.mason.meizu.sample.prvclass.ClassA, id=407)
+    com.mason.meizu.reflect.RExecutor.sMethodMap: instance of java.util.HashMap(id=413)
+    com.mason.meizu.reflect.RExecutor.sFieldMap: instance of java.util.HashMap(id=414)
+}
+main[1] 
+</code></pre><p>  看一下当前运行的线程. 输入</p>
+<pre><code>where all
+</code></pre><p>  结果</p>
+<pre><code>Signal Dispatcher:
+Finalizer:
+  [1] java.lang.Object.wait (native method)
+  [2] java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:143)
+  [3] java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:164)
+  [4] java.lang.ref.Finalizer$FinalizerThread.run (Finalizer.java:209)
+Reference Handler:
+  [1] java.lang.Object.wait (native method)
+  [2] java.lang.Object.wait (Object.java:502)
+  [3] java.lang.ref.Reference.tryHandlePending (Reference.java:191)
+  [4] java.lang.ref.Reference$ReferenceHandler.run (Reference.java:153)
+main:
+  [1] com.mason.meizu.sample.Main.main (Main.java:30)
+main[1] 
+</code></pre></li>
+</ul>
+<ul>
+<li><p>类似的命令还有如下， 建议你都试一下</p>
+<ul>
+<li>next  是执行下一步，相当于Eclipse中的F6</li>
+<li>stop in 进入函数实现, 相当于Eclipse中的F5</li>
+<li>stop out 运行完当前函数, 相当于Eclipse中的F7</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了一个命令行编译与命令行调试的过程。 这部分工作在日常的开发中都被我们的ide做了。 如果觉得不详细， 看看那个真男人是怎么告诉我们的:</p>
+<pre><code>man jdb
+</code></pre><p>抽时间我再把他翻译一下， 方便理解。</p>
+<h2 id="放松一下吧。"><a href="#放松一下吧。" class="headerlink" title="放松一下吧。"></a>放松一下吧。</h2><p><center><img src="/2017/02/16/Java-Debug-之-命令行调试-（一）/ssssss.jpg" alt="福利"></center></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步
+    
+    </summary>
+    
+      <category term="Java Debug" scheme="http://mapeiyu.com/categories/Java-Debug/"/>
+    
+    
+      <category term="java" scheme="http://mapeiyu.com/tags/java/"/>
+    
+      <category term="debug" scheme="http://mapeiyu.com/tags/debug/"/>
+    
+  </entry>
   
   <entry>
     <title>吐槽</title>

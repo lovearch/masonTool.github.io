@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="个人博客" />
+  <meta name="keywords" content="java,debug," />
 
 
 
@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。
-工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。">
+<meta name="description" content="最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步把debug研究透彻。要研究一个协议， 先找一个入手点。 平时大家都是用ide来调试， 但是本质一定是有一套协议的， 所以我们">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不做工作狂">
-<meta property="og:url" content="http://mapeiyu.com/2016/10/15/Workaholism/index.html">
+<meta property="og:title" content="Java Debug 之 命令行调试 （一）">
+<meta property="og:url" content="http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/index.html">
 <meta property="og:site_name" content="唧唧歪歪的河马正在打游戏">
-<meta property="og:description" content="我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。
-工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。">
-<meta property="og:updated_time" content="2017-02-13T06:13:36.748Z">
+<meta property="og:description" content="最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步把debug研究透彻。要研究一个协议， 先找一个入手点。 平时大家都是用ide来调试， 但是本质一定是有一套协议的， 所以我们">
+<meta property="og:image" content="http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/ssssss.jpg">
+<meta property="og:updated_time" content="2017-02-16T01:58:52.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不做工作狂">
-<meta name="twitter:description" content="我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。
-工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。">
+<meta name="twitter:title" content="Java Debug 之 命令行调试 （一）">
+<meta name="twitter:description" content="最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步把debug研究透彻。要研究一个协议， 先找一个入手点。 平时大家都是用ide来调试， 但是本质一定是有一套协议的， 所以我们">
+<meta name="twitter:image" content="http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/ssssss.jpg">
 
 
 
@@ -116,7 +115,7 @@
   };
 </script>
 
-  <title> 不做工作狂 | 唧唧歪歪的河马正在打游戏 </title>
+  <title> Java Debug 之 命令行调试 （一） | 唧唧歪歪的河马正在打游戏 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +265,7 @@
             
             
               
-                不做工作狂
+                Java Debug 之 命令行调试 （一）
               
             
           </h1>
@@ -278,8 +277,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T22:39:58+08:00" content="2016-10-15">
-              2016-10-15
+            <time itemprop="dateCreated" datetime="2017-02-16T09:52:27+08:00" content="2017-02-16">
+              2017-02-16
             </time>
           </span>
 
@@ -292,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/书摘/" itemprop="url" rel="index">
-                    <span itemprop="name">书摘</span>
+                  <a href="/categories/Java-Debug/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Debug</span>
                   </a>
                 </span>
 
@@ -308,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/15/Workaholism/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/15/Workaholism/" itemprop="commentsCount"></span>
+                <a href="/2017/02/16/Java-Debug-之-命令行调试-（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/Java-Debug-之-命令行调试-（一）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,7 +318,7 @@
 
           
           
-             <span id="/2016/10/15/Workaholism/" class="leancloud_visitors" data-flag-title="不做工作狂">
+             <span id="/2017/02/16/Java-Debug-之-命令行调试-（一）/" class="leancloud_visitors" data-flag-title="Java Debug 之 命令行调试 （一）">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -341,10 +340,141 @@
       
 
       
-        <p>我们的文化颂扬工作狂思想。我们听说人们会午夜鏖战。他们开夜车而在办公室睡觉。 这被认为是一种把全身投入一个项目的标志。工作的总量不等于过量的工作。<br>这样的工作狂不仅没必要,而且很傻。做得多并不意味着你足够用心或者完成得更多。仅仅意味着你做得多。</p>
-<p>工作狂最后制造的麻烦比解决的麻烦多。首先,工作狂好似没有合理利用时间。当筋疲力尽时,会制造更多麻烦。工作狂也抓不住要点。他们想用砸大把大把的时间来解决事情。他们想用蛮干来弥补一些小技巧。结果就是粗野的解决。</p>
-<p>他们甚至会制造危机。他们不会去找高效的方法因为他们确实喜欢加班。他们享受英雄般的感觉。他们制造出问题(通常是无意识地)以便多多工作。工作狂若是不留到很晚会觉得仅仅花合理的时间工作是不合理的。这会四处充满内疚感和低士气。并且,产生理所当然的想法──留守很晚是职责之外的事,就算他们不是真的富有成效。<br>如果你所做的都是工作,你不太可能得到很好的评价。你的价值和决定会以误解告终。你不能判断额外的努力是值得还是不值得。你只会彻底累垮。没有人能疲倦中做出明晰的决定。<br>  最后,工作狂并不比非工作狂达成更多目标。他们也许会宣称自己是完美主义者,但那只是意味着浪费时间在注意一些不重要的细节而不是着手于下一个任务。 </p>
-<p>  工作狂不是英雄。他们不是在节约时间而是在浪费。真正的英雄已经回到家中,因为她找到更快的方法把工作做好。</p>
+        <p>最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步把debug研究透彻。要研究一个协议， 先找一个入手点。 平时大家都是用ide来调试， 但是本质一定是有一套协议的， 所以我们先从命令行入手。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>首先你要有一个java环境（费话么）。相信对这个主题感性趣的人，这个条件一定是具备的。</li>
+<li>准备一个java工程。一个简单的.java文件也可以。这里我提供一个demo。 为了省事拿自己之前写的小工具做例子吧。 希望你能down下来， 后的讲解都是以这个demo为基础的. 路径为 <a href="https://github.com/masonTool/reflect" target="_blank" rel="external">reflect工具</a></li>
+<li>本文基于ubuntu环境。其他环境都不多。</li>
+</ul>
+<h2 id="动手"><a href="#动手" class="headerlink" title="动手"></a>动手</h2><ul>
+<li><p>进入命令行， 选一个目录开始我们旅程.</p>
+</li>
+<li><p>工程拉下来没有？ 没有就执行一下git clone </p>
+</li>
+</ul>
+<pre><code>git clone https://github.com/masonTool/reflect
+</code></pre><ul>
+<li>编译工程。 按下面的步骤一步步执行</li>
+</ul>
+<pre><code>//进入工程目录
+cd reflect  
+
+//创建类目录, 名字whatever, 用于存放类文件
+mkdir aaaa  
+
+//编译依赖. 我们是要编译sample里面的Main.java, 因为Main.java是java的入口啊。
+//说明一下:  -g 调试信息选项, 否则不能查看调试过程中的调试信息. 这也是ide的debug模式与release模式的区别
+            -d 指定类文件编译进我们刚创建的aaaa目录里面
+javac -g -d aaaa reflect/src/main/java/com/mason/meizu/reflect/*.java 
+
+//编译目标类 Main.java 和 prvclass/下的所有的java文件。
+//此处选项 -cp 实际是 -classpath. 指定编译上述java文件的依赖类的路径。 刚刚我们编进了aaaa, 此处用一下。
+//同时也指定了 -d aaaa , 所以此次编译的结果也放进 aaaa 目录
+javac -g -d aaaa -cp aaaa sample/src/com/mason/meizu/sample/prvclass/*.java sample/src/com/mason/meizu/sample/Main.java
+</code></pre><ul>
+<li><p>OK啦， 我们需要调试的资源就具备了。 进入 aaaa目录， tree 一下， 你看到的应该是这样</p>
+<pre><code>cd aaaa
+
+tree //如果没有命令就 sudo apt-get install tree 装一个
+
+└── com
+    └── mason
+        └── meizu
+            ├── reflect
+            │   ├── RClass.class
+            │   ├── RExecutor.class
+            │   ├── RInstance.class
+            │   ├── RInterface.class
+            │   ├── RInterface$ProxyHandler.class
+            │   └── RParam.class
+            └── sample
+                ├── Main.class
+                ├── Main$Demo.class
+                └── prvclass
+                    ├── ClassA.class
+                    ├── ClassB.class
+                    ├── ClassC.class
+                    ├── ClassD4Listener.class
+                    └── ClassD4Listener$Listener.class
+</code></pre></li>
+</ul>
+<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><ul>
+<li><p>进入调试模式</p>
+<pre><code>jdb com.mason.meizu.sample.Main
+</code></pre><p>  结果</p>
+<pre><code>Initializing jdb ...
+&gt; 
+</code></pre></li>
+<li><p>设置断点</p>
+<p>  输入</p>
+<pre><code>stop at com.mason.meizu.sample.Main:30//此处30指定断点在源文件的第30行
+</code></pre><p>  结果</p>
+<pre><code>Deferring breakpoint com.mason.meizu.sample.Main:30.
+It will be set after the class is loaded.
+</code></pre><p>  运行程程，到断点处停止。 输入</p>
+<pre><code>run
+</code></pre><p>  结果</p>
+<pre><code>run com.mason.meizu.sample.Main
+Set uncaught java.lang.Throwable
+Set deferred uncaught java.lang.Throwable
+&gt; 
+VM Started: Set deferred breakpoint com.mason.meizu.sample.Main:30
+
+Breakpoint hit: &quot;thread=main&quot;, com.mason.meizu.sample.Main.main(), line=30 bci=10
+
+main[1] 
+</code></pre><p>  看一下当前的变量, 输入 </p>
+<pre><code>locals
+</code></pre><p>  结果</p>
+<pre><code>Method arguments:
+args = instance of java.lang.String[0] (id=408)
+Local variables:
+clazzA = instance of com.mason.meizu.reflect.RClass(id=409)
+main[1]
+</code></pre><p>  看一下变量clazzA的详细情况, 输入</p>
+<pre><code>dump clazzA
+</code></pre><p>  结果</p>
+<pre><code>clazzA = {
+    sClassMap: instance of java.util.HashMap(id=410)
+    sConstructorMap: instance of java.util.HashMap(id=411)
+    className: &quot;com.mason.meizu.sample.prvclass.ClassA&quot;
+    classObj: instance of java.lang.Class(reflected class=com.mason.meizu.sample.prvclass.ClassA, id=407)
+    com.mason.meizu.reflect.RExecutor.sMethodMap: instance of java.util.HashMap(id=413)
+    com.mason.meizu.reflect.RExecutor.sFieldMap: instance of java.util.HashMap(id=414)
+}
+main[1] 
+</code></pre><p>  看一下当前运行的线程. 输入</p>
+<pre><code>where all
+</code></pre><p>  结果</p>
+<pre><code>Signal Dispatcher:
+Finalizer:
+  [1] java.lang.Object.wait (native method)
+  [2] java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:143)
+  [3] java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:164)
+  [4] java.lang.ref.Finalizer$FinalizerThread.run (Finalizer.java:209)
+Reference Handler:
+  [1] java.lang.Object.wait (native method)
+  [2] java.lang.Object.wait (Object.java:502)
+  [3] java.lang.ref.Reference.tryHandlePending (Reference.java:191)
+  [4] java.lang.ref.Reference$ReferenceHandler.run (Reference.java:153)
+main:
+  [1] com.mason.meizu.sample.Main.main (Main.java:30)
+main[1] 
+</code></pre></li>
+</ul>
+<ul>
+<li><p>类似的命令还有如下， 建议你都试一下</p>
+<ul>
+<li>next  是执行下一步，相当于Eclipse中的F6</li>
+<li>stop in 进入函数实现, 相当于Eclipse中的F5</li>
+<li>stop out 运行完当前函数, 相当于Eclipse中的F7</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了一个命令行编译与命令行调试的过程。 这部分工作在日常的开发中都被我们的ide做了。 如果觉得不详细， 看看那个真男人是怎么告诉我们的:</p>
+<pre><code>man jdb
+</code></pre><p>抽时间我再把他翻译一下， 方便理解。</p>
+<h2 id="放松一下吧。"><a href="#放松一下吧。" class="headerlink" title="放松一下吧。"></a>放松一下吧。</h2><p><center><img src="/2017/02/16/Java-Debug-之-命令行调试-（一）/ssssss.jpg" alt="福利"></center></p>
 
       
     </div>
@@ -385,22 +515,26 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/debug/" rel="tag">#debug</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/09/hexo-blog-config/" rel="next" title="blog的hexo配置移植方法">
-                <i class="fa fa-chevron-left"></i> blog的hexo配置移植方法
+              <a href="/2017/02/13/tu-cao/" rel="next" title="吐槽">
+                <i class="fa fa-chevron-left"></i> 吐槽
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/07/rx-operation/" rel="prev" title="RX操作符概述">
-                RX操作符概述 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -415,10 +549,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/10/15/Workaholism/"
-     data-title="不做工作狂"
+        <div class="ds-share flat" data-thread-key="2017/02/16/Java-Debug-之-命令行调试-（一）/"
+     data-title="Java Debug 之 命令行调试 （一）"
      data-content=""
-     data-url="http://mapeiyu.com/2016/10/15/Workaholism/">
+     data-url="http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -445,8 +579,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/15/Workaholism/"
-           data-title="不做工作狂" data-url="http://mapeiyu.com/2016/10/15/Workaholism/">
+      <div class="ds-thread" data-thread-key="2017/02/16/Java-Debug-之-命令行调试-（一）/"
+           data-title="Java Debug 之 命令行调试 （一）" data-url="http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/">
       </div>
     
   </div>
@@ -555,7 +689,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动手"><span class="nav-number">2.</span> <span class="nav-text">动手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入正题"><span class="nav-number">3.</span> <span class="nav-text">进入正题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放松一下吧。"><span class="nav-number">5.</span> <span class="nav-text">放松一下吧。</span></a></li></ol></div>
             
           </div>
         </section>
