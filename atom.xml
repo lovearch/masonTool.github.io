@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-02-16T01:58:52.549Z</updated>
+  <updated>2017-02-28T08:42:55.795Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>apk瘦身插件apkeditor新鲜出炉</title>
+    <link href="http://mapeiyu.com/2017/02/28/apkeditor/"/>
+    <id>http://mapeiyu.com/2017/02/28/apkeditor/</id>
+    <published>2017-02-28T08:25:34.000Z</published>
+    <updated>2017-02-28T08:42:55.795Z</updated>
+    
+    <content type="html"><![CDATA[<p>ApkEditor是一个Android应用的Gradle插件. </p>
+<p>在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。</p>
+<p>但是， ApkEditor需要你有能力可以分辨这些资源在运行时不会被用到。否则会造成程序的崩溃。</p>
+<h2 id="下载和使用"><a href="#下载和使用" class="headerlink" title="下载和使用"></a>下载和使用</h2><ol>
+<li><p>ApkEditor需要检查你的Android应用的运行环境。 所以请保证<code>com.android.application</code>已经被使用。</p>
+</li>
+<li><p>应用到项目:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath &apos;com.mapeiyu.apkeditor:apkeditor:1.0.0&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">apply plugin: &apos;apkeditor&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>apkeditor</code> 插件DSL:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apkeditor &#123;</div><div class="line">    exclude &apos;/assets/**&apos;</div><div class="line">    release &#123;</div><div class="line">        exclude &apos;lib/**&apos;</div><div class="line">    &#125;</div><div class="line">    debug &#123;</div><div class="line">        exclude &apos;res/**/*.png&apos;</div><div class="line">        exclude &apos;res/**/*.xml&apos;</div><div class="line">    &#125;</div><div class="line">    //如果你设置了一个名为black的flavor</div><div class="line">    blackDebug &#123; </div><div class="line">    	exclude &apos;lib/**&apos;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后正常构建或者安装. 生成的apk将会被打包成不含上述规则的资源</p>
+</li>
+</ol>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><ul>
+<li>在根节点下的<code>exclude</code>， 将会应用到所有的buildType和flavor产生的 apk中.</li>
+<li>指定节点下的<code>exclude</code>， 比如<code>release debug backDebug</code>, 只能应用到指定的apk中.</li>
+<li><code>exclude</code>可以被多次调用.</li>
+<li><code>exclude</code>的设置规则遵循 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String-" target="_blank" rel="external">Java Filesystem API</a>, 并且匹配来源来自于apk的文件结构. (你可解压缩apk, 或者通过Android Studio的分析工具 <code>Build-&gt;Analyze APK...</code>), 如图:<br> <center><img src="/2017/02/28/apkeditor/Screenshot.png" alt="1"></center></li>
+<li>不要理会首个字符 <code>/</code>. 有或者没有都是可以的。</li>
+<li><p>ApkEditor 无法作用到下面的这些文件。（因为这些文件在apk中是必不可少的）</p>
+<ul>
+<li>/META-INF/**</li>
+<li>resources.arsc</li>
+<li>AndroidManifest.xml</li>
+</ul>
+</li>
+<li><p>与Android Gradle DSL 中的 <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html" target="_blank" rel="external">PackagingOptions</a> 不同</p>
+<ul>
+<li>经过测试PackagingOptions无法对这些资源产生影响 <code>/res/  /assets/  .classes</code></li>
+<li>它的设置规则在 flavor和buildType中很不友好。</li>
+</ul>
+</li>
+</ul>
+<h2 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h2><ul>
+<li>获得源码 <a href="https://github.com/masonTool/ApkEditor" target="_blank" rel="external">GITHUB</a>.</li>
+<li>访问我的个人博客 <a href="http://www.mapeiyu.com" target="_blank" rel="external">马培羽</a></li>
+<li>邮件 <a href="mason.mpy@gmail.com">mason.mpy@gmail.com</a></li>
+</ul>
+<h2 id="不认识不是老司机"><a href="#不认识不是老司机" class="headerlink" title="不认识不是老司机"></a>不认识不是老司机</h2><p><center><img src="/2017/02/28/apkeditor/longzeluola.jpg" alt="福利"></center></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ApkEditor是一个Android应用的Gradle插件. &lt;/p&gt;
+&lt;p&gt;在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得
+    
+    </summary>
+    
+      <category term="原创组件" scheme="http://mapeiyu.com/categories/%E5%8E%9F%E5%88%9B%E7%BB%84%E4%BB%B6/"/>
+    
+    
+      <category term="android" scheme="http://mapeiyu.com/tags/android/"/>
+    
+      <category term="groovy" scheme="http://mapeiyu.com/tags/groovy/"/>
+    
+  </entry>
   
   <entry>
     <title>Java Debug 之 命令行调试 （一）</title>
