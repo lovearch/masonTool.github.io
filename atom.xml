@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-02-28T08:42:55.795Z</updated>
+  <updated>2017-03-01T08:50:30.889Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://mapeiyu.com/2017/02/28/apkeditor/"/>
     <id>http://mapeiyu.com/2017/02/28/apkeditor/</id>
     <published>2017-02-28T08:25:34.000Z</published>
-    <updated>2017-02-28T08:42:55.795Z</updated>
+    <updated>2017-03-01T08:50:30.889Z</updated>
     
     <content type="html"><![CDATA[<p>ApkEditor是一个Android应用的Gradle插件. </p>
 <p>在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。</p>
@@ -29,10 +29,10 @@
 <li><p>ApkEditor需要检查你的Android应用的运行环境。 所以请保证<code>com.android.application</code>已经被使用。</p>
 </li>
 <li><p>应用到项目:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath &apos;com.mapeiyu.apkeditor:apkeditor:1.0.0&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">apply plugin: &apos;apkeditor&apos;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath &apos;com.mapeiyu.apkeditor:apkeditor:1.0.3&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">apply plugin: &apos;apkeditor&apos;</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用<code>apkeditor</code> 插件DSL:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apkeditor &#123;</div><div class="line">    exclude &apos;/assets/**&apos;</div><div class="line">    release &#123;</div><div class="line">        exclude &apos;lib/**&apos;</div><div class="line">    &#125;</div><div class="line">    debug &#123;</div><div class="line">        exclude &apos;res/**/*.png&apos;</div><div class="line">        exclude &apos;res/**/*.xml&apos;</div><div class="line">    &#125;</div><div class="line">    //如果你设置了一个名为black的flavor</div><div class="line">    blackDebug &#123; </div><div class="line">    	exclude &apos;lib/**&apos;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">apkeditor &#123;</div><div class="line">       exclude &apos;/assets/**/sb/*.so&apos;</div><div class="line"></div><div class="line">       release &#123;</div><div class="line">           exclude &apos;lib/armeabi/**&apos;</div><div class="line">       &#125;</div><div class="line">       //假定你设置了一个名为black的flavor</div><div class="line">       blackDebug &#123;</div><div class="line">           exclude &apos;/res/layout/**&apos;</div><div class="line">           exclude &apos;res/drawable*/*.xml&apos;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>然后正常构建或者安装. 生成的apk将会被打包成不含上述规则的资源</p>
 </li>
