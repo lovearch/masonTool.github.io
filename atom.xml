@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-03-01T08:50:30.889Z</updated>
+  <updated>2017-03-02T08:03:20.219Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -16,11 +16,155 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Android自动化测试入门篇</title>
+    <link href="http://mapeiyu.com/2017/03/02/start-android-test/"/>
+    <id>http://mapeiyu.com/2017/03/02/start-android-test/</id>
+    <published>2017-03-02T07:40:01.000Z</published>
+    <updated>2017-03-02T08:03:20.219Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android的测试是基于<a href="http://junit.org/" target="_blank" rel="external">JUnit</a>的。 你可以基于JVM进行本地的单元测试(Local unit tests)， 也可以基于Android设备进行设备化的测试(instrumented tests)。 本文对构建Android测试的概念和工具， 进行一些简要的介绍.</p>
+<h2 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h2><p>对于你的项目中的任何一个模块，Android Studio提供了两个测试代码的目录。 你的测试代码必须写在这两个目录之中。这个两个目录就对应了相应的两个测试方法。 </p>
+<ul>
+<li><p>本地单元测试(Local unit tests)</p>
+<p>  目录位于 <code>module-name/src/test/java/.</code></p>
+<p>  这些测试代码运行于本地JVM, 并且不会调用任何的Android框架的API. </p>
+<p>  如果你想了解详情， 请参阅<a href="https://developer.android.com/training/testing/unit-testing/local-unit-tests.html" target="_blank" rel="external">构建本地单元测试</a></p>
+</li>
+<li><p>设备化测试(instrumented tests)</p>
+<p>  目录位于 <code>module-name/src/androidTest/java/.</code></p>
+<p>  这些测试代码必须运行在Android硬件设备或者虚拟机上。</p>
+<p>  设备化测试在测试app时， 会同时构建一个测试APK运行在设备上。系统会把测试APK与app运行在同一个进程下， 所以测试代码中可以调用app的方法, 修改app的变量, 并且自动执行你的app的各种交互.</p>
+<p>  相要了解如何创建设备化测试， 请关注下面的主题：</p>
+<ul>
+<li><p><a href="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html" target="_blank" rel="external">构建设备化单元测试</a> : 构建存在Android系统依赖的复杂单元测试案例（在模拟对象无法满足的情况下）。</p>
+</li>
+<li><p><a href="https://developer.android.com/training/testing/ui-testing/index.html" target="_blank" rel="external">自动化界面测试</a>: 构建测试案例验证用户界面行为的正确性（单应用的交互或者跨多应用的交互）。</p>
+</li>
+<li><p><a href="https://developer.android.com/training/testing/integration-testing/index.html" target="_blank" rel="external">测试App组件</a>: 验证组件的行为， 比如 Service 或 Content Provider等用户不能直接交互的组件。</p>
+<center><img src="/2017/03/02/start-android-test/test-types_2x.png" alt="tt"></center>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>然而, 本地单元测试和设备化测试仅仅是术语, 用来帮助区分是在本地JVM上运行还是在Android平台上运行的(硬件设备或模拟器)。在构建一个完整的测试案例时，你应该通过下面表中的描述来理解真正的测试类型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>子类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元测试(Unit tests)</td>
+<td>本地单元测试(Local Unit Tests)</td>
+<td>运行于本地虚拟机(JVM)的单元测试. 当你的测试有没有Android框架依赖或者这些依赖可以模拟时， 使用这种测试可以使执行时间最少化.</td>
+</tr>
+<tr>
+<td></td>
+<td>设备化单元测试(Instrumented unit tests)</td>
+<td>运行于Android设备或虚拟机的单元测试. 这种类型的测试可以获得<a href="https://developer.android.com/reference/android/app/Instrumentation.html" target="_blank" rel="external">Instrumentation</a>信息， 比如你正在测试的app的上下文信息 <a href="https://developer.android.com/reference/android/content/Context.html" target="_blank" rel="external">Context</a>. 当你的测试有不能被模拟的Android框架依赖时，使用这种测试。</td>
+</tr>
+<tr>
+<td>集成测试(Integration Tests)</td>
+<td>应用内组件测试(Components within your app only)</td>
+<td>在交互中当用户执行一个特定的行为，或者键入一个特定的输入， 这种类型的测试可以验证目录app的行为是否符合预期。比如说， 当用户在应用的Activity界面中进行交互时，它可以让你检查目标app的界面响应是否正确。像<a href="https://developer.android.com/tools/testing-support-library/index.html#Espresso" target="_blank" rel="external">Espresso</a>这种UI测试框架, 可以让你用编程的方式去模拟用户的行为，和检测应用内部复杂的交互逻辑.</td>
+</tr>
+<tr>
+<td></td>
+<td>跨应用组件测试(Cross-app Components)</td>
+<td>这种类型的测试， 可以验证不同的用户app间，用户app与系统app间的交互行为的正确性。比如说， 你可以验证当用户点击Android系统设置按钮时，你的app的行为是否正确。支持跨应用的交互框架，比如<a href="https://developer.android.com/topic/libraries/testing-support-library/index.html#UIAutomator" target="_blank" rel="external">UI Automator</a>允许你在这种场景下创建测试。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="测试的API"><a href="#测试的API" class="headerlink" title="测试的API"></a>测试的API</h2><p>以下为测试Android应用常用的api</p>
+<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><p>你可以像写 <a href="http://junit.org/" target="_blank" rel="external">JUnit4</a>测试类一样写你的单元测试和集成测试。JUnit框架提供了一种便捷的方式在你的测试中进行安装， 卸载， 和断言操作。</p>
+<p>一个基本的Junit4测试类是一个拥用一个或者多个测试方法的Java类。一个测试方法由<code>@Test</code>注解开始， 并且包含一段可以运行和验证单一功能的代码。</p>
+<p>下面的代码片段展示了一个JUnit 4集成测试的例子， 例子中使用<a href="https://developer.android.com/topic/libraries/testing-support-library/index.html#Espresso" target="_blank" rel="external">Espresso APIs</a> 在一个UI元素上执行点击操作， 然后检查是否有一个预期的字符串展示。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@RunWith(AndroidJUnit4.class)</div><div class="line">@LargeTest</div><div class="line">public class MainActivityInstrumentationTest &#123;</div><div class="line"></div><div class="line">    @Rule</div><div class="line">    public ActivityTestRule mActivityRule = new ActivityTestRule&lt;&gt;(</div><div class="line">            MainActivity.class);</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void sayHello()&#123;</div><div class="line">        onView(withText(&quot;Say hello!&quot;)).perform(click());</div><div class="line"></div><div class="line">        onView(withId(R.id.textView)).check(matches(withText(&quot;Hello, World!&quot;)));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在你的JUnit4测试类中， 你可以在你的测试代码中使用下面的注解调用特定处理的一部分。</p>
+<ul>
+<li><p>@Before: 使用这个注解可以指定一段包含测试设置操作的代码。测试类在每个测试执行前调用这段代码。你可以定义多个带有@Before注解的方法， 但是在测试类中这个方法执行的顺序是不确的。</p>
+</li>
+<li><p>@After: 这个注解指定一段代码包含测试卸载操作。在每个测试方法执行后调用这段代码。你可以定义多个@After操作的代码。使用这个注解来释放内存中的资源。</p>
+</li>
+<li><p>@Test: 使用这个注解标识一个测试方法。 一个单独的测试类可以有多个测试方法</p>
+</li>
+<li><p>@Rule: @Rule通过复用的方法，可以允许你可以灵活的添加和修改每个测试方法。 在Android测试中， 此注解需要和Android测试支持库中提供的测试规则类配合命用。比如 <a href="https://developer.android.com/reference/android/support/test/rule/ActivityTestRule.html" target="_blank" rel="external">ActivityTestRule</a>和 <a href="https://developer.android.com/reference/android/support/test/rule/ServiceTestRule.html" target="_blank" rel="external">ServiceTestRule</a></p>
+</li>
+<li><p>@BeforeClass: 使用此注解来指定一个测试类的静态方法只能调用一次。这种测试步骤对于耗时操作非常有用， 例如连接数据库操作。</p>
+</li>
+<li><p>@AfterClass: 使用这个注解来指定一个静态方法， 当类中所有的测试方法都已经运行完成的时候调用。 这个步骤对释放@BeforeClass块中占用的资源非常有用。</p>
+</li>
+<li><p>@Test(timeout=): 一些注解支持在注解中设置变量值。 例如， 你可以指定一个测试的超时时间，如果一个测试开始并且没有在指定的超时时间内完成， 它自动认为校验失败。超时时间的单位是毫秒， 如 <code>@Test(timeout=5000)</code></p>
+</li>
+</ul>
+<p>想了解更多注解， 可以参阅文档  <a href="http://junit.sourceforge.net/javadoc/org/junit/package-summary.html" target="_blank" rel="external">JUnit annotations</a> 和 <a href="https://developer.android.com/reference/android/support/annotation/package-summary.html" target="_blank" rel="external">Android annotations</a>.</p>
+<p>使用JUnit的<a href="https://developer.android.com/reference/junit/framework/Assert.html" target="_blank" rel="external">Assert</a>类来验证一个对象状态的正确性。asset方法比较你的期望值与真实值， 并且当两个值不相符时抛出一个异常。<a href="https://developer.android.com/training/testing/start/index.html#AssertionClasses" target="_blank" rel="external"> Assertion classes</a>对这些方法有详细的描述。</p>
+<h3 id="Android的测试支持库"><a href="#Android的测试支持库" class="headerlink" title="Android的测试支持库"></a>Android的测试支持库</h3><p><a href="https://developer.android.com/topic/libraries/testing-support-library/index.html" target="_blank" rel="external">Android的测试支持库</a>提供了一些API的集合，　使你可以快速的创建和运行测试代码，　包括JUnit4和UI测试。当你想自动化测试你的应用时，　下面这些库的基于设备的API会非常的有用。</p>
+<ul>
+<li><p><a href="https://developer.android.com/topic/libraries/testing-support-library/index.html#AndroidJUnitRunner" target="_blank" rel="external">AndroidJUnitRunner</a>. 一个Android的兼容JUnit4的测试运行器</p>
+</li>
+<li><p><a href="https://developer.android.com/topic/libraries/testing-support-library/index.html#Espresso" target="_blank" rel="external">Espresso</a>. 一个适用于应用内部ＵＩ功能验证的ＵＩ测试框架。</p>
+</li>
+<li><p><a href="https://developer.android.com/topic/libraries/testing-support-library/index.html#UIAutomator" target="_blank" rel="external">UI Automator</a>. 一个适用于跨应用的ＵＩ功能测试的ＵＩ测试框架</p>
+</li>
+</ul>
+<h3 id="Assertion-classes"><a href="#Assertion-classes" class="headerlink" title="Assertion classes"></a>Assertion classes</h3><p>因为Android测试支持库的API继承于JUnit, 所以你可以使用assetion方法来展示测试的结果。　一个assertion方法会比较实际的值与预期的值，　并且当结果不符时抛出一个AssertionException异常. 使用assertion可以比loggin的方式更方便，　并且拥有更好的性能。</p>
+<p>为了简化测试的开发，　你可以使用<a href="https://github.com/hamcrest" target="_blank" rel="external"> Hamcrest library</a>, 使用Hamcrest matcher APIs可以让你创建更灵活的测试。</p>
+<h3 id="Monkey和monkeyrunner"><a href="#Monkey和monkeyrunner" class="headerlink" title="Monkey和monkeyrunner"></a>Monkey和monkeyrunner</h3><p>Android SDK提供两种功能级app测试的工具。</p>
+<ul>
+<li><p>Monkey </p>
+<p>  Monkey是一个命令行工具，　可以向设备发送模拟的随机事件，　比如按钮，　触屏，　手势等。通过<a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="external">Android Debug Bridge (adb)</a>工具来运行。它可以用来进行压力测试，上报错误，或者多次重复执行一个事件。</p>
+</li>
+<li><p>monkeyrunner</p>
+<p>  这是一个用Python实现的工具，　它拥用测试程序API和执行环境。API的功能包括连接到设备，　安装卸载应用，　截屏，　比较图片，　执行一个app的测试包等。使用它的API，　你可以写出一些强大的复杂的测试。使用命令行工具monkeyrunner, 来运行你的程序。</p>
+</li>
+</ul>
+<h2 id="如何构建测试"><a href="#如何构建测试" class="headerlink" title="如何构建测试"></a>如何构建测试</h2><p>下面的这些文档提供了更详细的信息，教你如何创建和运行各种类型的测试。</p>
+<ul>
+<li><p><a href="https://developer.android.com/training/testing/unit-testing/local-unit-tests.html" target="_blank" rel="external">构建本地单元测试</a></p>
+<p>  构建没有依赖或只有可以模拟的简单依赖的单元测试，　运行于你的本地虚拟机</p>
+</li>
+<li><p><a href="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html" target="_blank" rel="external">构建设备单元测试</a></p>
+<p>  构建复杂的依赖Android的复杂单元测试，　运行于硬件设备或者模拟器。</p>
+</li>
+<li><p><a href="https://developer.android.com/training/testing/ui-testing/index.html" target="_blank" rel="external">自动化界面测试</a></p>
+<p>  创建用户界面行为的校验测试，　基于单应用或者跨应用。</p>
+</li>
+<li><p><a href="https://developer.android.com/training/testing/integration-testing/index.html" target="_blank" rel="external">测试组件集成</a></p>
+<p>  测试用户不能直接交互的组件，　比如Service或者Content Provider</p>
+</li>
+<li><p><a href="https://developer.android.com/training/testing/performance.html" target="_blank" rel="external">测试显示性能</a></p>
+<p>  测试你的应用的界面显示性能，　来保证有平滑的用户体验。</p>
+</li>
+</ul>
+<h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p>话说翻这东西真是劳心劳力,　四个小时，闲的么？<br>转载请注明来源 <a href="http://www.mapeiyu.com" target="_blank" rel="external">http://www.mapeiyu.com</a></p>
+<center><img src="/2017/03/02/start-android-test/jls.jpg" alt="tt"></center>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android的测试是基于&lt;a href=&quot;http://junit.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JUnit&lt;/a&gt;的。 你可以基于JVM进行本地的单元测试(Local unit tests)， 也可以基于Android设备进行
+    
+    </summary>
+    
+      <category term="Android自动化测试" scheme="http://mapeiyu.com/categories/Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="android" scheme="http://mapeiyu.com/tags/android/"/>
+    
+      <category term="test" scheme="http://mapeiyu.com/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
     <title>apk瘦身插件apkeditor新鲜出炉</title>
     <link href="http://mapeiyu.com/2017/02/28/apkeditor/"/>
     <id>http://mapeiyu.com/2017/02/28/apkeditor/</id>
     <published>2017-02-28T08:25:34.000Z</published>
-    <updated>2017-03-01T08:50:30.889Z</updated>
+    <updated>2017-03-02T08:02:57.303Z</updated>
     
     <content type="html"><![CDATA[<p>ApkEditor是一个Android应用的Gradle插件. </p>
 <p>在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。</p>
@@ -62,7 +206,7 @@
 <li>访问我的个人博客 <a href="http://www.mapeiyu.com" target="_blank" rel="external">马培羽</a></li>
 <li>邮件 <a href="mason.mpy@gmail.com">mason.mpy@gmail.com</a></li>
 </ul>
-<h2 id="不认识不是老司机"><a href="#不认识不是老司机" class="headerlink" title="不认识不是老司机"></a>不认识不是老司机</h2><p><center><img src="/2017/02/28/apkeditor/longzeluola.jpg" alt="福利"></center></p>
+<p><center><img src="/2017/02/28/apkeditor/longzeluola.jpg" alt="福利"></center></p>
 ]]></content>
     
     <summary type="html">
@@ -86,7 +230,7 @@
     <link href="http://mapeiyu.com/2017/02/16/Java-Debug-%E4%B9%8B-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95-%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://mapeiyu.com/2017/02/16/Java-Debug-之-命令行调试-（一）/</id>
     <published>2017-02-16T01:52:27.000Z</published>
-    <updated>2017-02-16T01:58:52.549Z</updated>
+    <updated>2017-03-02T08:02:49.239Z</updated>
     
     <content type="html"><![CDATA[<p>最近在研究编译时注解的一些东东。但是发现调试貌似有点麻烦， 于是找了网上的一些资料也找到了一些处理方法。 但是都是拿来主义， 为什么我们自己不能研究出来解决方法呢？ 本着刨根问底的态度， 决定先研究一下debug的原理。本篇做为系列的第一篇， 从一个小白的角度出发， 一步步把debug研究透彻。要研究一个协议， 先找一个入手点。 平时大家都是用ide来调试， 但是本质一定是有一套协议的， 所以我们先从命令行入手。</p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
@@ -222,7 +366,7 @@ main[1]
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了一个命令行编译与命令行调试的过程。 这部分工作在日常的开发中都被我们的ide做了。 如果觉得不详细， 看看那个真男人是怎么告诉我们的:</p>
 <pre><code>man jdb
 </code></pre><p>抽时间我再把他翻译一下， 方便理解。</p>
-<h2 id="放松一下吧。"><a href="#放松一下吧。" class="headerlink" title="放松一下吧。"></a>放松一下吧。</h2><p><center><img src="/2017/02/16/Java-Debug-之-命令行调试-（一）/ssssss.jpg" alt="福利"></center></p>
+<p><center><img src="/2017/02/16/Java-Debug-之-命令行调试-（一）/ssssss.jpg" alt="福利"></center></p>
 ]]></content>
     
     <summary type="html">
@@ -286,7 +430,7 @@ main[1]
     <link href="http://mapeiyu.com/2017/02/13/groovy-closure/"/>
     <id>http://mapeiyu.com/2017/02/13/groovy-closure/</id>
     <published>2017-02-13T03:18:28.000Z</published>
-    <updated>2017-02-13T06:14:55.592Z</updated>
+    <updated>2017-03-02T08:02:39.359Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>闭包是可以用作函数参数和方法参数的代码块. 其实Groovy的闭包更象是一个“代码块”或者方法指针，代码在某处被定义然后在其后的调用处执行</p>
 <h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def square = &#123;it * it&#125; // 定义一个叫square的闭包。it是默认的 参数名称</div><div class="line">assert 4 == square(2) // 使用闭包</div><div class="line">assert [1,4,9] == [1,2,3].collect(square) // 使用闭包</div><div class="line"></div><div class="line">def closure = &#123; param -&gt; println(&quot;hello $&#123;param&#125;&quot;) &#125;</div><div class="line">closure.call(&quot;world!&quot;)</div><div class="line"> </div><div class="line">def closure = &#123; greeting, name -&gt; println(greeting + name) &#125;</div><div class="line">closure.call(&quot;hello &quot;, &quot;world!&quot;)</div></pre></td></tr></table></figure>
@@ -310,7 +454,6 @@ main[1]
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">interface MultiFuncTest</div><div class="line">&#123;</div><div class="line">    def test1()</div><div class="line">    def test2(str)</div><div class="line">&#125;</div><div class="line"> </div><div class="line">def impl = [test1:&#123;println&apos;test&apos;&#125;,</div><div class="line">        test2:&#123;str -&gt; println str&#125;] as MultiFuncTest</div><div class="line"></div><div class="line">impl.test1()</div><div class="line">impl.test2(&apos;ok&apos;)</div></pre></td></tr></table></figure>
 <h2 id="delegate委托"><a href="#delegate委托" class="headerlink" title="delegate委托"></a>delegate委托</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Dog&#123;</div><div class="line">    def play = &#123;</div><div class="line">      &quot;wang wang!&quot;</div><div class="line">    &#125;</div><div class="line">    def childmind = &#123;</div><div class="line">        println       delegate.play();      </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">class Cat &#123;</div><div class="line">    def play = &#123;&quot;mi mi !&quot;&#125;</div><div class="line">&#125;</div><div class="line">def dog = new Dog()</div><div class="line">def cat = new Cat()</div><div class="line">dog.childmind()</div><div class="line">dog.childmind.delegate  = cat;</div><div class="line">dog.childmind()</div></pre></td></tr></table></figure>
-<p><center>OVER! 福利来喽!</center></p>
 <p><center><img src="/2017/02/13/groovy-closure/11.jpg" alt="料"></center></p>
 ]]></content>
     
@@ -334,11 +477,11 @@ main[1]
     <link href="http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/"/>
     <id>http://mapeiyu.com/2017/02/09/reflect-update-2-2-0/</id>
     <published>2017-02-09T06:46:38.000Z</published>
-    <updated>2017-02-13T06:16:44.224Z</updated>
+    <updated>2017-03-02T08:02:30.079Z</updated>
     
     <content type="html"><![CDATA[<p>增加反射interface的实例化支持. 还添加了中文文档说明哦。</p>
 <p><a href="https://github.com/masonTool/reflect" target="_blank" rel="external">点我传送门</a>  </p>
-<p><center><img src="/2017/02/09/reflect-update-2-2-0/JYEY6NH06E91.jpg" alt="我有料"></center><br>额，我是料!!</p>
+<p><center><img src="/2017/02/09/reflect-update-2-2-0/JYEY6NH06E91.jpg" alt="我有料"></center></p>
 <p><center><img src="/2017/02/09/reflect-update-2-2-0/jinguanzhang.jpg" alt=""></center></p>
 ]]></content>
     
