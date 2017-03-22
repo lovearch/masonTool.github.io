@@ -86,21 +86,21 @@
 
 
 
-<meta name="description" content="如何通过注解添加逻辑近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
-注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。">
+<meta name="description" content="做什么？？近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
+注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何通过注解添加逻辑">
 <meta property="og:url" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/index.html">
 <meta property="og:site_name" content="唧唧歪歪的河马正在打游戏">
-<meta property="og:description" content="如何通过注解添加逻辑近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
-注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。">
+<meta property="og:description" content="做什么？？近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
+注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。。。">
 <meta property="og:image" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/java-task.png">
 <meta property="og:image" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/android-task.png">
-<meta property="og:updated_time" content="2017-03-22T03:06:48.685Z">
+<meta property="og:updated_time" content="2017-03-22T03:10:58.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何通过注解添加逻辑">
-<meta name="twitter:description" content="如何通过注解添加逻辑近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
-注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。">
+<meta name="twitter:description" content="做什么？？近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
+注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。。。">
 <meta name="twitter:image" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/java-task.png">
 
 
@@ -344,7 +344,7 @@
       
 
       
-        <h4 id="如何通过注解添加逻辑"><a href="#如何通过注解添加逻辑" class="headerlink" title="如何通过注解添加逻辑"></a>如何通过注解添加逻辑</h4><p>近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。</p>
+        <h4 id="做什么？？"><a href="#做什么？？" class="headerlink" title="做什么？？"></a>做什么？？</h4><p>近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。</p>
 <h4 id="注解处理器"><a href="#注解处理器" class="headerlink" title="注解处理器"></a>注解处理器</h4><p>第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。。。<br>    <a href="http://www.open-open.com/lib/view/open1470735314518.html" target="_blank" rel="external">http://www.open-open.com/lib/view/open1470735314518.html</a></p>
 <h4 id="构造代码"><a href="#构造代码" class="headerlink" title="构造代码"></a>构造代码</h4><p>添加逻辑就是要自己构造代码喽。一般都是用方块的javapoet. 继续哼哧，哼哧。。。。<br>    <a href="http://www.jianshu.com/p/95f12f72f69a" target="_blank" rel="external">http://www.jianshu.com/p/95f12f72f69a</a><br>    <a href="https://github.com/square/javapoet" target="_blank" rel="external">https://github.com/square/javapoet</a> </p>
 <h4 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件?"></a>修改文件?</h4><p>哦。不对javapoet只能用来生成新的java文件。 不能用来修改class文件， 我们的目的是要修改生成的class文件啊。</p>
@@ -577,7 +577,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何通过注解添加逻辑"><span class="nav-number">1.</span> <span class="nav-text">如何通过注解添加逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解处理器"><span class="nav-number">2.</span> <span class="nav-text">注解处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造代码"><span class="nav-number">3.</span> <span class="nav-text">构造代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件"><span class="nav-number">4.</span> <span class="nav-text">修改文件?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nuwa怎么做到的"><span class="nav-number">5.</span> <span class="nav-text">nuwa怎么做到的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asm字节码"><span class="nav-number">6.</span> <span class="nav-text">asm字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#此路不通"><span class="nav-number">7.</span> <span class="nav-text">此路不通</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle的task"><span class="nav-number">8.</span> <span class="nav-text">gradle的task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率问题"><span class="nav-number">9.</span> <span class="nav-text">效率问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解处理器与gradle相结合"><span class="nav-number">10.</span> <span class="nav-text">注解处理器与gradle相结合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#找找别的办法"><span class="nav-number">11.</span> <span class="nav-text">找找别的办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大牛回复"><span class="nav-number">12.</span> <span class="nav-text">大牛回复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hugo怎么做的"><span class="nav-number">13.</span> <span class="nav-text">hugo怎么做的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AspectJ"><span class="nav-number">14.</span> <span class="nav-text">AspectJ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案确定"><span class="nav-number">15.</span> <span class="nav-text">方案确定</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#做什么？？"><span class="nav-number">1.</span> <span class="nav-text">做什么？？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解处理器"><span class="nav-number">2.</span> <span class="nav-text">注解处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造代码"><span class="nav-number">3.</span> <span class="nav-text">构造代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件"><span class="nav-number">4.</span> <span class="nav-text">修改文件?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nuwa怎么做到的"><span class="nav-number">5.</span> <span class="nav-text">nuwa怎么做到的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asm字节码"><span class="nav-number">6.</span> <span class="nav-text">asm字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#此路不通"><span class="nav-number">7.</span> <span class="nav-text">此路不通</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle的task"><span class="nav-number">8.</span> <span class="nav-text">gradle的task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率问题"><span class="nav-number">9.</span> <span class="nav-text">效率问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解处理器与gradle相结合"><span class="nav-number">10.</span> <span class="nav-text">注解处理器与gradle相结合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#找找别的办法"><span class="nav-number">11.</span> <span class="nav-text">找找别的办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大牛回复"><span class="nav-number">12.</span> <span class="nav-text">大牛回复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hugo怎么做的"><span class="nav-number">13.</span> <span class="nav-text">hugo怎么做的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AspectJ"><span class="nav-number">14.</span> <span class="nav-text">AspectJ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案确定"><span class="nav-number">15.</span> <span class="nav-text">方案确定</span></a></li></ol></div>
             
           </div>
         </section>

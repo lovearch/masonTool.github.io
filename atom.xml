@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-03-22T03:06:48.685Z</updated>
+  <updated>2017-03-22T03:10:58.217Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/"/>
     <id>http://mapeiyu.com/2017/03/22/add-logic-through-annotation/</id>
     <published>2017-03-22T03:00:03.000Z</published>
-    <updated>2017-03-22T03:06:48.685Z</updated>
+    <updated>2017-03-22T03:10:58.217Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="如何通过注解添加逻辑"><a href="#如何通过注解添加逻辑" class="headerlink" title="如何通过注解添加逻辑"></a>如何通过注解添加逻辑</h4><p>近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。</p>
+    <content type="html"><![CDATA[<h4 id="做什么？？"><a href="#做什么？？" class="headerlink" title="做什么？？"></a>做什么？？</h4><p>近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。</p>
 <h4 id="注解处理器"><a href="#注解处理器" class="headerlink" title="注解处理器"></a>注解处理器</h4><p>第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。。。<br>    <a href="http://www.open-open.com/lib/view/open1470735314518.html" target="_blank" rel="external">http://www.open-open.com/lib/view/open1470735314518.html</a></p>
 <h4 id="构造代码"><a href="#构造代码" class="headerlink" title="构造代码"></a>构造代码</h4><p>添加逻辑就是要自己构造代码喽。一般都是用方块的javapoet. 继续哼哧，哼哧。。。。<br>    <a href="http://www.jianshu.com/p/95f12f72f69a" target="_blank" rel="external">http://www.jianshu.com/p/95f12f72f69a</a><br>    <a href="https://github.com/square/javapoet" target="_blank" rel="external">https://github.com/square/javapoet</a> </p>
 <h4 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件?"></a>修改文件?</h4><p>哦。不对javapoet只能用来生成新的java文件。 不能用来修改class文件， 我们的目的是要修改生成的class文件啊。</p>
@@ -43,7 +43,7 @@
     
     <summary type="html">
     
-      &lt;h4 id=&quot;如何通过注解添加逻辑&quot;&gt;&lt;a href=&quot;#如何通过注解添加逻辑&quot; class=&quot;headerlink&quot; title=&quot;如何通过注解添加逻辑&quot;&gt;&lt;/a&gt;如何通过注解添加逻辑&lt;/h4&gt;&lt;p&gt;近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁
+      &lt;h4 id=&quot;做什么？？&quot;&gt;&lt;a href=&quot;#做什么？？&quot; class=&quot;headerlink&quot; title=&quot;做什么？？&quot;&gt;&lt;/a&gt;做什么？？&lt;/h4&gt;&lt;p&gt;近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStar
     
     </summary>
     
