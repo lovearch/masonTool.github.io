@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,groovy," />
+  <meta name="keywords" content="java,android,annotation," />
 
 
 
@@ -86,31 +86,22 @@
 
 
 
-<meta name="description" content="ApkEditor是一个Android应用的Gradle插件. 
-在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。
-但是， ApkEditor需要你有能力可以分辨这些资源在运行时不会被用到。否则会造成程序的崩溃。
-下载和使用
-ApkEditor需要检">
+<meta name="description" content="如何通过注解添加逻辑近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
+注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="apk瘦身插件apkeditor新鲜出炉">
-<meta property="og:url" content="http://mapeiyu.com/2017/02/28/apkeditor/index.html">
+<meta property="og:title" content="如何通过注解添加逻辑">
+<meta property="og:url" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/index.html">
 <meta property="og:site_name" content="唧唧歪歪的河马正在打游戏">
-<meta property="og:description" content="ApkEditor是一个Android应用的Gradle插件. 
-在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。
-但是， ApkEditor需要你有能力可以分辨这些资源在运行时不会被用到。否则会造成程序的崩溃。
-下载和使用
-ApkEditor需要检">
-<meta property="og:image" content="http://mapeiyu.com/2017/02/28/apkeditor/Screenshot.png">
-<meta property="og:image" content="http://mapeiyu.com/2017/02/28/apkeditor/longzeluola.jpg">
-<meta property="og:updated_time" content="2017-03-02T08:02:57.303Z">
+<meta property="og:description" content="如何通过注解添加逻辑近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
+注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。">
+<meta property="og:image" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/java-task.png">
+<meta property="og:image" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/android-task.png">
+<meta property="og:updated_time" content="2017-03-22T03:06:48.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="apk瘦身插件apkeditor新鲜出炉">
-<meta name="twitter:description" content="ApkEditor是一个Android应用的Gradle插件. 
-在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。
-但是， ApkEditor需要你有能力可以分辨这些资源在运行时不会被用到。否则会造成程序的崩溃。
-下载和使用
-ApkEditor需要检">
-<meta name="twitter:image" content="http://mapeiyu.com/2017/02/28/apkeditor/Screenshot.png">
+<meta name="twitter:title" content="如何通过注解添加逻辑">
+<meta name="twitter:description" content="如何通过注解添加逻辑近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。
+注解处理器第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。">
+<meta name="twitter:image" content="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/java-task.png">
 
 
 
@@ -128,7 +119,7 @@ ApkEditor需要检">
   };
 </script>
 
-  <title> apk瘦身插件apkeditor新鲜出炉 | 唧唧歪歪的河马正在打游戏 </title>
+  <title> 如何通过注解添加逻辑 | 唧唧歪歪的河马正在打游戏 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,7 +269,7 @@ ApkEditor需要检">
             
             
               
-                apk瘦身插件apkeditor新鲜出炉
+                如何通过注解添加逻辑
               
             
           </h1>
@@ -290,8 +281,8 @@ ApkEditor需要检">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-28T16:25:34+08:00" content="2017-02-28">
-              2017-02-28
+            <time itemprop="dateCreated" datetime="2017-03-22T11:00:03+08:00" content="2017-03-22">
+              2017-03-22
             </time>
           </span>
 
@@ -304,8 +295,8 @@ ApkEditor需要检">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/原创组件/" itemprop="url" rel="index">
-                    <span itemprop="name">原创组件</span>
+                  <a href="/categories/方案/" itemprop="url" rel="index">
+                    <span itemprop="name">方案</span>
                   </a>
                 </span>
 
@@ -320,8 +311,8 @@ ApkEditor需要检">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/28/apkeditor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/28/apkeditor/" itemprop="commentsCount"></span>
+                <a href="/2017/03/22/add-logic-through-annotation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/22/add-logic-through-annotation/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,7 +322,7 @@ ApkEditor需要检">
 
           
           
-             <span id="/2017/02/28/apkeditor/" class="leancloud_visitors" data-flag-title="apk瘦身插件apkeditor新鲜出炉">
+             <span id="/2017/03/22/add-logic-through-annotation/" class="leancloud_visitors" data-flag-title="如何通过注解添加逻辑">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -353,47 +344,23 @@ ApkEditor需要检">
       
 
       
-        <p>ApkEditor是一个Android应用的Gradle插件. </p>
-<p>在Android应用中经常会引用一些lib或者aar，但这些第三方的包不可避免会携带一些冗余的资源, 使你的apk变得很大。本插件可以把这些资源从你的apk中剔除出来， 使你的apk变得尽可能得小。</p>
-<p>但是， ApkEditor需要你有能力可以分辨这些资源在运行时不会被用到。否则会造成程序的崩溃。</p>
-<h2 id="下载和使用"><a href="#下载和使用" class="headerlink" title="下载和使用"></a>下载和使用</h2><ol>
-<li><p>ApkEditor需要检查你的Android应用的运行环境。 所以请保证<code>com.android.application</code>已经被使用。</p>
-</li>
-<li><p>应用到项目:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath &apos;com.mapeiyu.apkeditor:apkeditor:1.0.3&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">apply plugin: &apos;apkeditor&apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用<code>apkeditor</code> 插件DSL:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">apkeditor &#123;</div><div class="line">       exclude &apos;/assets/**/sb/*.so&apos;</div><div class="line"></div><div class="line">       release &#123;</div><div class="line">           exclude &apos;lib/armeabi/**&apos;</div><div class="line">       &#125;</div><div class="line">       //假定你设置了一个名为black的flavor</div><div class="line">       blackDebug &#123;</div><div class="line">           exclude &apos;/res/layout/**&apos;</div><div class="line">           exclude &apos;res/drawable*/*.xml&apos;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>然后正常构建或者安装. 生成的apk将会被打包成不含上述规则的资源</p>
-</li>
-</ol>
-<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><ul>
-<li>在根节点下的<code>exclude</code>， 将会应用到所有的buildType和flavor产生的 apk中.</li>
-<li>指定节点下的<code>exclude</code>， 比如<code>release debug backDebug</code>, 只能应用到指定的apk中.</li>
-<li><code>exclude</code>可以被多次调用.</li>
-<li><code>exclude</code>的设置规则遵循 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String-" target="_blank" rel="external">Java Filesystem API</a>, 并且匹配来源来自于apk的文件结构. (你可解压缩apk, 或者通过Android Studio的分析工具 <code>Build-&gt;Analyze APK...</code>), 如图:<br> <center><img src="/2017/02/28/apkeditor/Screenshot.png" alt="1"></center></li>
-<li>不要理会首个字符 <code>/</code>. 有或者没有都是可以的。</li>
-<li><p>ApkEditor 无法作用到下面的这些文件。（因为这些文件在apk中是必不可少的）</p>
-<ul>
-<li>/META-INF/**</li>
-<li>resources.arsc</li>
-<li>AndroidManifest.xml</li>
-</ul>
-</li>
-<li><p>与Android Gradle DSL 中的 <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html" target="_blank" rel="external">PackagingOptions</a> 不同</p>
-<ul>
-<li>经过测试PackagingOptions无法对这些资源产生影响 <code>/res/  /assets/  .classes</code></li>
-<li>它的设置规则在 flavor和buildType中很不友好。</li>
-</ul>
-</li>
-</ul>
-<h2 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h2><ul>
-<li>获得源码 <a href="https://github.com/masonTool/ApkEditor" target="_blank" rel="external">GITHUB</a>.</li>
-<li>访问我的个人博客 <a href="http://www.mapeiyu.com" target="_blank" rel="external">马培羽</a></li>
-<li>邮件 <a href="mason.mpy@gmail.com">mason.mpy@gmail.com</a></li>
-</ul>
-<p><center><img src="/2017/02/28/apkeditor/longzeluola.jpg" alt="福利"></center></p>
+        <h4 id="如何通过注解添加逻辑"><a href="#如何通过注解添加逻辑" class="headerlink" title="如何通过注解添加逻辑"></a>如何通过注解添加逻辑</h4><p>近期在为公司的项目做埋点。 因为之前做过几次， 深知这个东西的麻烦， 要频繁的往代码中添加重复逻辑。什么onStart, onStop全部都重写一遍， 做为一个码农，咱怎么也算是脑力劳动者， 什么时候变成干体力活了。研究了两天，绕了一个大弯， 终于找到了方法。记录一下这个过程。</p>
+<h4 id="注解处理器"><a href="#注解处理器" class="headerlink" title="注解处理器"></a>注解处理器</h4><p>第一感觉是不是这个东西要用到编译时注解， 因为咱的目的是在编译时添加逻辑嘛。哼哧，哼哧。。。。<br>    <a href="http://www.open-open.com/lib/view/open1470735314518.html" target="_blank" rel="external">http://www.open-open.com/lib/view/open1470735314518.html</a></p>
+<h4 id="构造代码"><a href="#构造代码" class="headerlink" title="构造代码"></a>构造代码</h4><p>添加逻辑就是要自己构造代码喽。一般都是用方块的javapoet. 继续哼哧，哼哧。。。。<br>    <a href="http://www.jianshu.com/p/95f12f72f69a" target="_blank" rel="external">http://www.jianshu.com/p/95f12f72f69a</a><br>    <a href="https://github.com/square/javapoet" target="_blank" rel="external">https://github.com/square/javapoet</a> </p>
+<h4 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件?"></a>修改文件?</h4><p>哦。不对javapoet只能用来生成新的java文件。 不能用来修改class文件， 我们的目的是要修改生成的class文件啊。</p>
+<h4 id="nuwa怎么做到的"><a href="#nuwa怎么做到的" class="headerlink" title="nuwa怎么做到的"></a>nuwa怎么做到的</h4><p>记得之前热更新插件中可以修改class文件的， nuwa就是通过修改class文件来达到使类具有热修复能力的。 继续哼哧，哼哧。。。。<br>    <a href="https://github.com/jasonross/Nuwa" target="_blank" rel="external">https://github.com/jasonross/Nuwa</a></p>
+<h4 id="asm字节码"><a href="#asm字节码" class="headerlink" title="asm字节码"></a>asm字节码</h4><p>原来用的asm字节码工具啊。 继续哼哧， 哼哧。。。。<br>    <a href="https://www.ibm.com/developerworks/cn/java/j-lo-asm30/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/java/j-lo-asm30/</a><br>    <a href="http://asm.ow2.org/" target="_blank" rel="external">http://asm.ow2.org/</a></p>
+<h4 id="此路不通"><a href="#此路不通" class="headerlink" title="此路不通"></a>此路不通</h4><p>发现问题了啊。注解处理器无法处理修改类。同时注解处理器的处理时机是在编译之前， 即这里还没有生成class文件。 完蛋， 此路不通啊。。。。</p>
+<h4 id="gradle的task"><a href="#gradle的task" class="headerlink" title="gradle的task"></a>gradle的task</h4><p>即然注解处理器的处理时机不对，不如我们自己来控制处理时机喽。在gradle的编译task上下文章。在java的compileJava task后面， 或者在 android的compileXXXSources task后面执行 asm的字节码处理。 看下面两个图:</p>
+<center><img src="/2017/03/22/add-logic-through-annotation/java-task.png" alt="java">  <img src="/2017/03/22/add-logic-through-annotation/android-task.png" alt="android"></center>
+
+<h4 id="效率问题"><a href="#效率问题" class="headerlink" title="效率问题"></a>效率问题</h4><p>但是这个效率太低了啊。 不像注解处理器一样， asm无法专门找到和处理某个annotation. 难倒要让asm扫描所有的类文件， 找到指定的annotation?? </p>
+<h4 id="注解处理器与gradle相结合"><a href="#注解处理器与gradle相结合" class="headerlink" title="注解处理器与gradle相结合"></a>注解处理器与gradle相结合</h4><p>只能想方法喽。 把注解处理器和gradle编译结合起来。先通过注解处理器把包含注解的类过滤出来， 然后在gradle的编译task后使用asm处理过滤出来的类。 </p>
+<h4 id="找找别的办法"><a href="#找找别的办法" class="headerlink" title="找找别的办法"></a>找找别的办法</h4><p>貌似逻辑上可以走通哦，但总是感觉有那么一点点别扭。找找有没有别的办法。国内毛都查不到， 还是老外见多识广。<br>    <a href="http://stackoverflow.com/questions/4851429/modify-a-method-using-annotations" target="_blank" rel="external">http://stackoverflow.com/questions/4851429/modify-a-method-using-annotations</a></p>
+<h4 id="大牛回复"><a href="#大牛回复" class="headerlink" title="大牛回复"></a>大牛回复</h4><p>他跟我要实现的效果差不多。初始想法好像也是跟我差不多， 想用annotation processor来处理。 但是被第一个回复的大牛能否决了啊。 大牛还摘了一段wiki的原话， 意思是不能修改原annotation标注的类云云。但是我找了一下， 可能是版本升级吧。 大牛最关键的<code>but annotation processors cannot modify the annotated code itself.</code> 一句， 已被wike改成了<code>and also modify the annotated code itself</code>。 好像还是可以改， 所以回到第6步， 看来还是能用 annotation processor. 但在编译前的注解处理器，估计只能改java原文件吧。 class还没有编译出来啊。这不是我想要的。 </p>
+<h4 id="hugo怎么做的"><a href="#hugo怎么做的" class="headerlink" title="hugo怎么做的"></a>hugo怎么做的</h4><p>再想想办法. 记得之前用过大神jake walton的log神器hugo. 可以通过一注解来打印函数的变量， 执行时间等等。 显然这只能是通过注解把逻辑注入到了函数中实现的。<br>    <a href="https://github.com/JakeWharton/hugo" target="_blank" rel="external">https://github.com/JakeWharton/hugo</a></p>
+<h4 id="AspectJ"><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h4><p>对于实现原理， 只能拿来了。 果然他用了另一种切面语言 AspectJ注入的逻辑。最初上面的老外那个问题， 大牛也提出了使用<code>AspectJ Development Tools</code>的解决方案。同时还不依不饶的让楼主使用。 我最初没在意， 以为就是一个eclipse的源码处理插件。通过ide的编译器做到的识别annotation插件代码， 类似搜索替换. 但通过hugo的使用， 看来是通用的。<br>    <a href="http://blog.csdn.net/xxxzhi/article/details/53048476" target="_blank" rel="external">http://blog.csdn.net/xxxzhi/article/details/53048476</a><br>    <a href="http://blog.csdn.net/hp910315/article/details/52701809" target="_blank" rel="external">http://blog.csdn.net/hp910315/article/details/52701809</a></p>
+<h4 id="方案确定"><a href="#方案确定" class="headerlink" title="方案确定"></a>方案确定</h4><p>在此， 确定了方案为使用 aspectJ来实现通过注解添加逻辑。一切参照hugo的代码实现即可。 我的简易实现代码， 稍后补上。 </p>
 
       
     </div>
@@ -436,9 +403,11 @@ ApkEditor需要检">
       
         <div class="post-tags">
           
+            <a href="/tags/java/" rel="tag">#java</a>
+          
             <a href="/tags/android/" rel="tag">#android</a>
           
-            <a href="/tags/groovy/" rel="tag">#groovy</a>
+            <a href="/tags/annotation/" rel="tag">#annotation</a>
           
         </div>
       
@@ -447,17 +416,13 @@ ApkEditor需要检">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/16/Java-Debug-之-命令行调试-（一）/" rel="next" title="Java Debug 之 命令行调试 （一）">
-                <i class="fa fa-chevron-left"></i> Java Debug 之 命令行调试 （一）
+              <a href="/2017/03/02/start-android-test/" rel="next" title="Android自动化测试入门篇">
+                <i class="fa fa-chevron-left"></i> Android自动化测试入门篇
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/02/start-android-test/" rel="prev" title="Android自动化测试入门篇">
-                Android自动化测试入门篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,10 +437,10 @@ ApkEditor需要检">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/02/28/apkeditor/"
-     data-title="apk瘦身插件apkeditor新鲜出炉"
+        <div class="ds-share flat" data-thread-key="2017/03/22/add-logic-through-annotation/"
+     data-title="如何通过注解添加逻辑"
      data-content=""
-     data-url="http://mapeiyu.com/2017/02/28/apkeditor/">
+     data-url="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -502,8 +467,8 @@ ApkEditor需要检">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/28/apkeditor/"
-           data-title="apk瘦身插件apkeditor新鲜出炉" data-url="http://mapeiyu.com/2017/02/28/apkeditor/">
+      <div class="ds-thread" data-thread-key="2017/03/22/add-logic-through-annotation/"
+           data-title="如何通过注解添加逻辑" data-url="http://mapeiyu.com/2017/03/22/add-logic-through-annotation/">
       </div>
     
   </div>
@@ -612,7 +577,7 @@ ApkEditor需要检">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载和使用"><span class="nav-number">1.</span> <span class="nav-text">下载和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释"><span class="nav-number">2.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系"><span class="nav-number">3.</span> <span class="nav-text">联系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何通过注解添加逻辑"><span class="nav-number">1.</span> <span class="nav-text">如何通过注解添加逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解处理器"><span class="nav-number">2.</span> <span class="nav-text">注解处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造代码"><span class="nav-number">3.</span> <span class="nav-text">构造代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件"><span class="nav-number">4.</span> <span class="nav-text">修改文件?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nuwa怎么做到的"><span class="nav-number">5.</span> <span class="nav-text">nuwa怎么做到的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asm字节码"><span class="nav-number">6.</span> <span class="nav-text">asm字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#此路不通"><span class="nav-number">7.</span> <span class="nav-text">此路不通</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle的task"><span class="nav-number">8.</span> <span class="nav-text">gradle的task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率问题"><span class="nav-number">9.</span> <span class="nav-text">效率问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解处理器与gradle相结合"><span class="nav-number">10.</span> <span class="nav-text">注解处理器与gradle相结合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#找找别的办法"><span class="nav-number">11.</span> <span class="nav-text">找找别的办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大牛回复"><span class="nav-number">12.</span> <span class="nav-text">大牛回复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hugo怎么做的"><span class="nav-number">13.</span> <span class="nav-text">hugo怎么做的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AspectJ"><span class="nav-number">14.</span> <span class="nav-text">AspectJ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案确定"><span class="nav-number">15.</span> <span class="nav-text">方案确定</span></a></li></ol></div>
             
           </div>
         </section>
