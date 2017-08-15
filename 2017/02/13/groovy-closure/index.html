@@ -2,8 +2,10 @@
 
 
 
+  
 
-<html class="theme-next mist" lang="zh-Hans">
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -120,7 +122,7 @@
     sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: false,
+    motion: true,
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -389,17 +391,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/13/groovy-closure/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/02/13/groovy-closure/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -521,12 +512,7 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5Mi82NzQ3"></div>
     
   </div>
 
@@ -798,26 +784,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://英明神武的博主大人.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://mapeiyu.com/2017/02/13/groovy-closure/';
-          this.page.identifier = '2017/02/13/groovy-closure/';
-          this.page.title = 'groovy closure';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://英明神武的博主大人.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -830,6 +796,21 @@
   
 
 
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
 
 
 
