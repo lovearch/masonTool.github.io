@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-08-15T02:11:40.744Z</updated>
+  <updated>2017-08-17T01:37:05.428Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>移动端网络优化方向</title>
+    <link href="http://mapeiyu.com/2017/08/17/network-opt/"/>
+    <id>http://mapeiyu.com/2017/08/17/network-opt/</id>
+    <published>2017-08-17T01:35:46.000Z</published>
+    <updated>2017-08-17T01:37:05.428Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿一个网络请求可以简单分为连接服务器 -&gt; 获取数据两个部分。</p>
+<h2 id="一-连接服务器优化"><a href="#一-连接服务器优化" class="headerlink" title="一. 连接服务器优化"></a>一. 连接服务器优化</h2><ul>
+<li>不用域名，用 IP 直连（gslb）<br>省去首次域名解析一般需要几百毫秒， 预防域名劫持带来的风险</li>
+<li>服务器部署<br>动态 IP选择最优的服务器IP进行连接， 服务器端还可以调优服务器的 TCP 拥塞窗口大小、重传超时时间(RTO)、最大传输单元(MTU)</li>
+</ul>
+<h2 id="二-获取数据优化"><a href="#二-获取数据优化" class="headerlink" title="二. 获取数据优化"></a>二. 获取数据优化</h2><ul>
+<li>连接复用(三次握手方面)<br>节省连接建立时间，如开启 keep-alive</li>
+<li>合并请求</li>
+<li>减小请求数据大小<br>post请求的body用gzip压缩， 请求头压缩， </li>
+<li>CDN缓存</li>
+<li>减小返回数据大小<br>api数据gzip压缩， 数据格式json, protobuf, 多个图片分变率， webp格式， 增量更新， 断点续传</li>
+</ul>
+<h2 id="三-其它优化"><a href="#三-其它优化" class="headerlink" title="三. 其它优化"></a>三. 其它优化</h2><ul>
+<li>预加载</li>
+<li>延迟加载</li>
+<li>并发请求</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿一个网络请求可以简单分为连接服务器 -&amp;gt; 获取数据两个部分。&lt;/p&gt;
+&lt;h2 id=&quot;一-连接服务器优化&quot;&gt;&lt;a href=&quot;#一-连接服务器优化&quot; class=&quot;headerlink&quot; title=&quot;一. 连接服务器优化&quot;&gt;&lt;/a&gt;一. 连接服务器优化&lt;/h2&gt;&lt;
+    
+    </summary>
+    
+      <category term="优化" scheme="http://mapeiyu.com/categories/%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="网络" scheme="http://mapeiyu.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>数据库基本概念</title>
