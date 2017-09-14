@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mapeiyu.com/"/>
-  <updated>2017-08-17T01:37:05.428Z</updated>
+  <updated>2017-09-14T13:34:10.415Z</updated>
   <id>http://mapeiyu.com/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跨进程通信工具Messenger</title>
+    <link href="http://mapeiyu.com/2017/09/14/Messenger/"/>
+    <id>http://mapeiyu.com/2017/09/14/Messenger/</id>
+    <published>2017-09-14T13:31:18.000Z</published>
+    <updated>2017-09-14T13:34:10.415Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="跨进程通信工具Messenger"><a href="#跨进程通信工具Messenger" class="headerlink" title="跨进程通信工具Messenger"></a>跨进程通信工具Messenger</h1><p>版本更新见 <a href="LOG.md">历史版本</a></p>
+<h2 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h2><p>MMessenger是一个跨进程通信工具， 与系统提供的Messenger不同。 MM可以拓展了功能， 支持同步， 异步， 注册操作等等。彻底封装实现逻辑， 为使用者提供了方便了拓展和便利的接口使用。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile &quot;com.mapeiyu.messenger:messenger:1.0.0&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>工具分为两部分， Server端功能支持与Client端功能支持。下面我们分两步来讲解。</p>
+<h3 id="Server端"><a href="#Server端" class="headerlink" title="Server端"></a>Server端</h3><p>Server端是用来提供服务为外部使用的， 我们提供了便利的接口来方便Server端的功能拓展。</p>
+<p>在Application中添加处理器BaseSVHandler, 其中定义handlerName方便三方找到此方法.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">MServer.addHandler(&quot;Plus&quot;, new BaseSVHandler() &#123;</div><div class="line">    @Override</div><div class="line">    public Bundle onRequestSync(Bundle request, ICallback callback) &#123;</div><div class="line">        int a = request.getInt(&quot;A&quot;);</div><div class="line">        int b = request.getInt(&quot;B&quot;);</div><div class="line"></div><div class="line">        Bundle result = new Bundle();</div><div class="line">        result.putInt(&quot;RESULT&quot;, a + b);</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onRequestAsync(final Bundle request, final @NonNull ICallback callback) &#123;</div><div class="line">        //模拟耗时操作</div><div class="line">        try &#123;</div><div class="line">            Thread.sleep(1000);</div><div class="line">        &#125; catch (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        int a = request.getInt(&quot;A&quot;);</div><div class="line">        int b = request.getInt(&quot;B&quot;);</div><div class="line"></div><div class="line">        Bundle result = new Bundle();</div><div class="line">        result.putInt(&quot;RESULT&quot;, a + b);</div><div class="line">        try &#123;</div><div class="line">            callback.postResult(result);</div><div class="line">        &#125; catch (RemoteException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>其中 <code>onRequestSync</code>为同步接口， 可以使Client端直接获得返回结果。<code>onRequestAsync</code>为异步接口， 在异步线程中执行，操作结果通过回调的形式返回</p>
+<p>这样设置后， 接入方就拥有了， 提供给外部Client使用的能力。</p>
+<h3 id="Client端"><a href="#Client端" class="headerlink" title="Client端"></a>Client端</h3><p>Client是服务的使用方， 在使用服务时， 有下面几个步骤。</p>
+<ol>
+<li>连接服务</li>
+</ol>
+<ul>
+<li>异步操作方式， 可用在所有场景<br><code>MClient.connect(context: Context, target: String, connectCallback: IConnectCallback)</code></li>
+</ul>
+<p>其中target为目标server的包名.</p>
+<ol>
+<li>请求结果</li>
+</ol>
+<p>请求结果也存在同步，异步两种方式， 与上面Server端的两种实现相对应.一个完整的Client端实现是这样的。注意Client端与Server端一定是对应的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">MClient.connect(this, &quot;com.meizu.launcher&quot;, new ConnectCallback() &#123;</div><div class="line">    @Override</div><div class="line">    public void onConnected(@NonNull MBridge bridge) &#123;</div><div class="line">        Bundle request = new Bundle();</div><div class="line">        request.putInt(&quot;A&quot;, 1);</div><div class="line">        request.putInt(&quot;B&quot;, 2);</div><div class="line">        try &#123;</div><div class="line">            //同步请求的例子</div><div class="line">            Bundle result = bridge.requestSync(&quot;Plus&quot;, request);</div><div class="line">            Log.e(&quot;result&quot;, result.getString(&quot;RESULT&quot;) + &quot;=&quot;);</div><div class="line">        &#125; catch (RemoteException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        try &#123;</div><div class="line">            //异步请求的例子</div><div class="line">            bridge.requestAsync(&quot;Plus&quot;, request, new ResultCallback() &#123;</div><div class="line">                @Override</div><div class="line">                public void onResult(Bundle result) throws RemoteException &#123;</div><div class="line">                    Log.e(&quot;result&quot;, result.getString(&quot;RESULT&quot;) + &quot;=&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125; catch (RemoteException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;跨进程通信工具Messenger&quot;&gt;&lt;a href=&quot;#跨进程通信工具Messenger&quot; class=&quot;headerlink&quot; title=&quot;跨进程通信工具Messenger&quot;&gt;&lt;/a&gt;跨进程通信工具Messenger&lt;/h1&gt;&lt;p&gt;版本更新见 &lt;a href=
+    
+    </summary>
+    
+      <category term="原创组件" scheme="http://mapeiyu.com/categories/%E5%8E%9F%E5%88%9B%E7%BB%84%E4%BB%B6/"/>
+    
+    
+      <category term="android" scheme="http://mapeiyu.com/tags/android/"/>
+    
+      <category term="kotlin" scheme="http://mapeiyu.com/tags/kotlin/"/>
+    
+  </entry>
   
   <entry>
     <title>移动端网络优化方向</title>
@@ -296,7 +342,7 @@ public @interface Keep { }
     <link href="http://mapeiyu.com/2017/03/02/start-android-test/"/>
     <id>http://mapeiyu.com/2017/03/02/start-android-test/</id>
     <published>2017-03-02T07:40:01.000Z</published>
-    <updated>2017-03-02T08:03:20.220Z</updated>
+    <updated>2017-09-13T04:34:05.992Z</updated>
     
     <content type="html"><![CDATA[<p>Android的测试是基于<a href="http://junit.org/" target="_blank" rel="external">JUnit</a>的。 你可以基于JVM进行本地的单元测试(Local unit tests)， 也可以基于Android设备进行设备化的测试(instrumented tests)。 本文对构建Android测试的概念和工具， 进行一些简要的介绍.</p>
 <h2 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h2><p>对于你的项目中的任何一个模块，Android Studio提供了两个测试代码的目录。 你的测试代码必须写在这两个目录之中。这个两个目录就对应了相应的两个测试方法。 </p>

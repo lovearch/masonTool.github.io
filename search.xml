@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[跨进程通信工具Messenger]]></title>
+    <url>%2F2017%2F09%2F14%2FMessenger%2F</url>
+    <content type="text"><![CDATA[跨进程通信工具Messenger版本更新见 历史版本 工具说明MMessenger是一个跨进程通信工具， 与系统提供的Messenger不同。 MM可以拓展了功能， 支持同步， 异步， 注册操作等等。彻底封装实现逻辑， 为使用者提供了方便了拓展和便利的接口使用。 使用方法123dependencies &#123; compile &quot;com.mapeiyu.messenger:messenger:1.0.0&quot;&#125; 工具分为两部分， Server端功能支持与Client端功能支持。下面我们分两步来讲解。 Server端Server端是用来提供服务为外部使用的， 我们提供了便利的接口来方便Server端的功能拓展。 在Application中添加处理器BaseSVHandler, 其中定义handlerName方便三方找到此方法. 1234567891011121314151617181920212223242526272829303132MServer.addHandler(&quot;Plus&quot;, new BaseSVHandler() &#123; @Override public Bundle onRequestSync(Bundle request, ICallback callback) &#123; int a = request.getInt(&quot;A&quot;); int b = request.getInt(&quot;B&quot;); Bundle result = new Bundle(); result.putInt(&quot;RESULT&quot;, a + b); return result; &#125; @Override public void onRequestAsync(final Bundle request, final @NonNull ICallback callback) &#123; //模拟耗时操作 try &#123; Thread.sleep(1000); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; int a = request.getInt(&quot;A&quot;); int b = request.getInt(&quot;B&quot;); Bundle result = new Bundle(); result.putInt(&quot;RESULT&quot;, a + b); try &#123; callback.postResult(result); &#125; catch (RemoteException e) &#123; e.printStackTrace(); &#125; &#125;&#125;); 其中 onRequestSync为同步接口， 可以使Client端直接获得返回结果。onRequestAsync为异步接口， 在异步线程中执行，操作结果通过回调的形式返回 这样设置后， 接入方就拥有了， 提供给外部Client使用的能力。 Client端Client是服务的使用方， 在使用服务时， 有下面几个步骤。 连接服务 异步操作方式， 可用在所有场景MClient.connect(context: Context, target: String, connectCallback: IConnectCallback) 其中target为目标server的包名. 请求结果 请求结果也存在同步，异步两种方式， 与上面Server端的两种实现相对应.一个完整的Client端实现是这样的。注意Client端与Server端一定是对应的。 123456789101112131415161718192021222324252627MClient.connect(this, &quot;com.meizu.launcher&quot;, new ConnectCallback() &#123; @Override public void onConnected(@NonNull MBridge bridge) &#123; Bundle request = new Bundle(); request.putInt(&quot;A&quot;, 1); request.putInt(&quot;B&quot;, 2); try &#123; //同步请求的例子 Bundle result = bridge.requestSync(&quot;Plus&quot;, request); Log.e(&quot;result&quot;, result.getString(&quot;RESULT&quot;) + &quot;=&quot;); &#125; catch (RemoteException e) &#123; e.printStackTrace(); &#125; try &#123; //异步请求的例子 bridge.requestAsync(&quot;Plus&quot;, request, new ResultCallback() &#123; @Override public void onResult(Bundle result) throws RemoteException &#123; Log.e(&quot;result&quot;, result.getString(&quot;RESULT&quot;) + &quot;=&quot;); &#125; &#125;); &#125; catch (RemoteException e) &#123; e.printStackTrace(); &#125; &#125;&#125;);]]></content>
+      <categories>
+        <category>原创组件</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>kotlin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[移动端网络优化方向]]></title>
     <url>%2F2017%2F08%2F17%2Fnetwork-opt%2F</url>
     <content type="text"><![CDATA[一个网络请求可以简单分为连接服务器 -&gt; 获取数据两个部分。 一. 连接服务器优化 不用域名，用 IP 直连（gslb）省去首次域名解析一般需要几百毫秒， 预防域名劫持带来的风险 服务器部署动态 IP选择最优的服务器IP进行连接， 服务器端还可以调优服务器的 TCP 拥塞窗口大小、重传超时时间(RTO)、最大传输单元(MTU) 二. 获取数据优化 连接复用(三次握手方面)节省连接建立时间，如开启 keep-alive 合并请求 减小请求数据大小post请求的body用gzip压缩， 请求头压缩， CDN缓存 减小返回数据大小api数据gzip压缩， 数据格式json, protobuf, 多个图片分变率， webp格式， 增量更新， 断点续传 三. 其它优化 预加载 延迟加载 并发请求]]></content>
